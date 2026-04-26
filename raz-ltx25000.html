@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAZ LTX25000 — The Vapor Place</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .back-btn {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00e5ff;
+      border: 1px solid #00e5ff;
+      border-radius: 6px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(0,229,255,0.1); }
+    .back-bar { margin: 24px 0; }
+    h1 span { color: #00e5ff; }
+
+    .flavor-list { list-style: none; padding: 0; margin: 24px 0; }
+    .flavor-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #222;
+      transition: background 0.15s;
+    }
+    .flavor-row:hover { background: #1a1a1a; }
+    .thumb-wrap { flex-shrink: 0; cursor: pointer; }
+    .thumb-wrap img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      display: block;
+      transition: border-color 0.2s;
+    }
+    .thumb-wrap:hover img { border-color: #00e5ff; }
+    .no-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 6px;
+      background: #1a1a1a;
+      border: 1px dashed #333;
+      flex-shrink: 0;
+    }
+    .col-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #00e5ff;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 36px;
+    }
+    .col-model {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #555;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 72px;
+    }
+    .col-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      flex-shrink: 0;
+      min-width: 200px;
+    }
+    .col-desc { font-size: 0.82rem; color: #888; }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,229,255,0.15);
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+  </style>
+</head>
+<body id="inner-page">
+<div style="position:relative;z-index:1;">
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="The Vapor Place" class="logo-img">
+      </a>
+      <span class="badge-21">21+</span>
+    </div>
+        <nav>
+      <a href="index.html">E-Juice Finder</a>
+      <a href="menu3.html">Sub Ohm &amp; Salt</a>
+      <a href="https://tvp.aglots.com" target="_blank">Full Store</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="back-bar">
+      <a href="raz.html" class="back-btn">&larr; Back to RAZ</a>
+    </div>
+
+    <h1>RAZ <span>LTX25000</span></h1>
+    <p style="color:#888;margin-bottom:8px;">25,000 Puffs &nbsp;&middot;&nbsp; Disposable</p>
+
+    <ul class="flavor-list">
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Banana Candy</div>
+        <div class="col-desc">Sweet, nostalgic banana candy flavor.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-bangin-sour-berries.jpg')">
+          <img src="images/raz-ltx25000-bangin-sour-berries.jpg" alt="Bangin Sour Berries">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Bangin' Sour Berries</div>
+        <div class="col-desc">A punch of tangy mixed berries.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-black-cherry-peach.jpg')">
+          <img src="images/raz-ltx25000-black-cherry-peach.jpg" alt="Black Cherry Peach">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Black Cherry Peach</div>
+        <div class="col-desc">Bold black cherry with juicy peach.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Black&amp;Blue Lime</div>
+        <div class="col-desc">Blackberries, blueberries, and a twist of lime.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Blue Raz (Gush Edition)</div>
+        <div class="col-desc">Juicy blue raspberry with a candy kick.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-blue-raz-ice.jpg')">
+          <img src="images/raz-ltx25000-blue-raz-ice.jpg" alt="Blue Razz Ice">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Blue Razz Ice</div>
+        <div class="col-desc">Tangy blue raspberry with an icy exhale.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Blueberry (Punch Edition)</div>
+        <div class="col-desc">Bold blueberry in a juicy punch style.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-blueberry-watermelon.jpg')">
+          <img src="images/raz-ltx25000-blueberry-watermelon.jpg" alt="Blueberry Watermelon">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Blueberry Watermelon</div>
+        <div class="col-desc">Sweet blueberries blended with crisp watermelon.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-cherry-strapple.jpg')">
+          <img src="images/raz-ltx25000-cherry-strapple.jpg" alt="Cherry Strapple">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Cherry Strapple</div>
+        <div class="col-desc">A mix of cherry, strawberry, and crisp apple.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-clear.jpg')">
+          <img src="images/raz-ltx25000-clear.jpg" alt="Clear">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Clear</div>
+        <div class="col-desc">Pure, smooth, and clean taste.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-clear-diamond.jpg')">
+          <img src="images/raz-ltx25000-clear-diamond.jpg" alt="Clear Diamond">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Clear Diamond</div>
+        <div class="col-desc">Refined, crisp, and crystal-clear smoothness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-clear-sapphire.jpg')">
+          <img src="images/raz-ltx25000-clear-sapphire.jpg" alt="Clear Sapphire">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Clear Sapphire</div>
+        <div class="col-desc">Smooth, clean, and crystal-cool finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-fire-ice.jpg')">
+          <img src="images/raz-ltx25000-fire-ice.jpg" alt="Fire &amp; Ice">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Fire &amp; Ice</div>
+        <div class="col-desc">A bold mix of spicy warmth and icy chill.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-frozen-banana.jpg')">
+          <img src="images/raz-ltx25000-frozen-banana.jpg" alt="Frozen Edition - Banana">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Frozen Edition — Banana</div>
+        <div class="col-desc">Creamy banana with a frosty chill.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-frozen-cherry-apple.jpg')">
+          <img src="images/raz-ltx25000-frozen-cherry-apple.jpg" alt="Frozen Edition - Cherry Apple">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Frozen Edition — Cherry Apple</div>
+        <div class="col-desc">Sweet cherry and tart apple over ice.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-frozen-dragonfruit-lemon.jpg')">
+          <img src="images/raz-ltx25000-frozen-dragonfruit-lemon.jpg" alt="Frozen Edition - Dragonfruit Lemon">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Frozen Edition — Dragonfruit Lemon</div>
+        <div class="col-desc">Exotic dragonfruit with zesty lemon ice.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-frozen-juicy-strawberry.jpg')">
+          <img src="images/raz-ltx25000-frozen-juicy-strawberry.jpg" alt="Frozen Edition - Juicy Strawberry">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Frozen Edition — Juicy Strawberry</div>
+        <div class="col-desc">Lush strawberry chilled to perfection.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-frozen-raspberry-watermelon.jpg')">
+          <img src="images/raz-ltx25000-frozen-raspberry-watermelon.jpg" alt="Frozen Edition - Raspberry Watermelon">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Frozen Edition — Raspberry Watermelon</div>
+        <div class="col-desc">Sweet raspberry and watermelon on ice.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-georgia-peach.jpg')">
+          <img src="images/raz-ltx25000-georgia-peach.jpg" alt="Georgia Peach">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Georgia Peach</div>
+        <div class="col-desc">Ripe, juicy peach with Southern sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Hawaiian (Punch Edition)</div>
+        <div class="col-desc">A tropical punch with island fruits.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-iced-blue-dragon.jpg')">
+          <img src="images/raz-ltx25000-iced-blue-dragon.jpg" alt="Ice Blue Dragon">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Ice Blue Dragon</div>
+        <div class="col-desc">Exotic dragonfruit chilled with icy coolness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-mango-loco.jpg')">
+          <img src="images/raz-ltx25000-mango-loco.jpg" alt="Mango Loco">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Mango Loco</div>
+        <div class="col-desc">Tropical, sweet, and juicy mango madness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-miami-mint.jpg')">
+          <img src="images/raz-ltx25000-miami-mint.jpg" alt="Miami Mint">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Miami Mint</div>
+        <div class="col-desc">Smooth, cooling mint with a tropical flair.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-new-york-mint.jpg')">
+          <img src="images/raz-ltx25000-new-york-mint.jpg" alt="New York Mint">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">New York Mint</div>
+        <div class="col-desc">Fresh, cool, city-smooth mint.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-night-crawler.jpg')">
+          <img src="images/raz-ltx25000-night-crawler.jpg" alt="Night Crawler">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Night Crawler</div>
+        <div class="col-desc">A bold sweet-and-sour gummy-inspired blend with a tangy kick and smooth, candy-like finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Orange Berry Lime Ice</div>
+        <div class="col-desc">Citrus orange, sweet berries, and lime ice.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-orange-mango.jpg')">
+          <img src="images/raz-ltx25000-orange-mango.jpg" alt="Orange Mango">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Orange Mango</div>
+        <div class="col-desc">Bright orange fused with tropical mango.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Orange Mango (Fall Edition)</div>
+        <div class="col-desc">Seasonal twist of citrus orange and ripe mango.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Orange Pineapple (Punch Edition)</div>
+        <div class="col-desc">Zesty orange with tropical pineapple punch.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-peppermint-candy-cane.jpg')">
+          <img src="images/raz-ltx25000-peppermint-candy-cane.jpg" alt="Peppermint Candy Cane">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Peppermint Candy Cane</div>
+        <div class="col-desc">Cool peppermint with sweet candy cane.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-pink-lemonade-mint.jpg')">
+          <img src="images/raz-ltx25000-pink-lemonade-mint.jpg" alt="Pink Lemonade Mint">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Pink Lemonade Mint</div>
+        <div class="col-desc">Tart pink lemonade with cooling mint.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Pink Lemonade Mint (Fall Edition)</div>
+        <div class="col-desc">Tart lemonade balanced with cool mint refresh.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-rainbow-rain.jpg')">
+          <img src="images/raz-ltx25000-rainbow-rain.jpg" alt="Rainbow Rain">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Rainbow Rain</div>
+        <div class="col-desc">A colorful burst of fruity sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-raspberry-limeade.jpg')">
+          <img src="images/raz-ltx25000-raspberry-limeade.jpg" alt="Raspberry Limeade">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Raspberry Limeade</div>
+        <div class="col-desc">Tart raspberries splashed with zesty lime.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-razzle-dazzle.jpg')">
+          <img src="images/raz-ltx25000-razzle-dazzle.jpg" alt="Razzle Dazzle">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Razzle Dazzle</div>
+        <div class="col-desc">Bright mixed berry sweetness with a tangy kick.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-sour-apple-ice.jpg')">
+          <img src="images/raz-ltx25000-sour-apple-ice.jpg" alt="Sour Apple Ice">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Sour Apple Ice</div>
+        <div class="col-desc">Crisp green apple with a frosty bite.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-sour-apple-watermelon.jpg')">
+          <img src="images/raz-ltx25000-sour-apple-watermelon.jpg" alt="Sour Apple Watermelon">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Sour Apple Watermelon</div>
+        <div class="col-desc">Tart green apple with sweet watermelon.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Sour Raspberry (Punch Edition)</div>
+        <div class="col-desc">Tangy raspberry with punchy sour notes.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Sour Raspberry Watermelon</div>
+        <div class="col-desc">Tangy raspberry mixed with juicy watermelon.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-sour-watermelon-peach.jpg')">
+          <img src="images/raz-ltx25000-sour-watermelon-peach.jpg" alt="Sour Watermelon Peach">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Sour Watermelon Peach</div>
+        <div class="col-desc">Tangy watermelon paired with sweet peach.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-strawberry-burst.jpg')">
+          <img src="images/raz-ltx25000-strawberry-burst.jpg" alt="Strawberry Burst">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Strawberry Burst</div>
+        <div class="col-desc">Sweet, ripe strawberry explosion.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-strawberry-kiwi-pear.jpg')">
+          <img src="images/raz-ltx25000-strawberry-kiwi-pear.jpg" alt="Strawberry Kiwi Pear">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Strawberry Kiwi Pear</div>
+        <div class="col-desc">Sweet strawberry, tart kiwi, and crisp pear blend.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-strawberry-orange-tang.jpg')">
+          <img src="images/raz-ltx25000-strawberry-orange-tang.jpg" alt="Strawberry Orange Tang">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Strawberry Orange Tang</div>
+        <div class="col-desc">Strawberry blended with citrusy orange zest.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Strawberry Peach (Gush Edition)</div>
+        <div class="col-desc">Juicy strawberry and peach candy fusion.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-tobacco.jpg')">
+          <img src="images/raz-ltx25000-tobacco.jpg" alt="Tobacco">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Tobacco</div>
+        <div class="col-desc">Classic, rich, and smooth tobacco.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Triple Berry (Gush Edition)</div>
+        <div class="col-desc">Sweet berry medley with candy sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Triple Berry (Punch Edition)</div>
+        <div class="col-desc">Berry trio blended into a fruity punch.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Tropical (Gush Edition)</div>
+        <div class="col-desc">A candy-inspired tropical fruit blend.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-watermelon-ice.jpg')">
+          <img src="images/raz-ltx25000-watermelon-ice.jpg" alt="Watermelon Ice">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Watermelon Ice</div>
+        <div class="col-desc">Juicy watermelon with a refreshing icy chill.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">White Grape (Gush Edition)</div>
+        <div class="col-desc">Sweet white grape with candy notes.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/raz-ltx25000-wintergreen.jpg')">
+          <img src="images/raz-ltx25000-wintergreen.jpg" alt="Wintergreen">
+        </div>
+        <div class="col-brand">RAZ</div><div class="col-model">LTX25000</div>
+        <div class="col-name">Wintergreen</div>
+        <div class="col-desc">Classic cool wintergreen freshness.</div>
+      </li>
+
+    </ul>
+  </main>
+
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-img').src = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
