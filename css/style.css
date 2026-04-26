@@ -461,3 +461,29 @@ footer {
   nav a { padding: 11px 14px; font-size: 0.68rem; }
   .card-grid { grid-template-columns: 1fr; }
 }
+
+/* ── VAPOR.MENU WHITE THEME ─────────────────────────────────── */
+body {
+  background: #f5f5f7 !important;
+  color: #111827 !important;
+}
+body#inner-page {
+  background: #f5f5f7 !important;
+  color: #111827 !important;
+}
+header {
+  background: #ffffff !important;
+  border-bottom: 2px solid #e5e7eb !important;
+  border-image: none !important;
+}
+nav a { color: #374151 !important; }
+nav a:hover, nav a.active { color: #0284c7 !important; background: rgba(2,132,199,0.08) !important; }
+main { background: #f5f5f7 !important; }
+.flavor-row { border-bottom: 1px solid #e5e7eb !important; }
+.flavor-row:hover { background: #efefef !important; }
+.col-name { color: #111827 !important; }
+.col-desc { color: #6b7280 !important; }
+.product-card { background: #ffffff !important; border-color: #d1d1d6 !important; }
+.product-card:hover { border-color: #0284c7 !important; background: #f0f4ff !important; }
+.product-name { color: #111827 !important; }
+.product-sub { color: #6b7280 !important; }
