@@ -1510,15 +1510,9 @@ function renderShopHeader() {
   const shop = getShop();
   const logoEl = document.getElementById('shop-logo');
   const nameEl = document.getElementById('shop-name');
-  if (shop.logo) {
-    logoEl.src = shop.logo;
-    logoEl.style.display = 'block';
-    nameEl.style.display = 'none';
-  } else {
-    logoEl.style.display = 'none';
-    nameEl.style.display = '';
-    nameEl.textContent = shop.name || 'E-Juice Finder';
-  }
+  logoEl.src = 'images/logo.png';
+  logoEl.style.display = 'block';
+  nameEl.style.display = 'none';
   document.getElementById('header-addr').textContent = shop.address || '';
   document.getElementById('header-phone').textContent = shop.phone || '';
 }
