@@ -1841,8 +1841,7 @@ function renderBrandGrid() {
     <img class="brand-card-logo" src="images/pachamama-logo.png" alt="Pachamama" style="filter:none;opacity:1;">
   </div>` : '';
   const fiftyCard = fiftySeen ? `<div class="brand-card" data-link="fifty-bar.html">
-    <div class="brand-card-name" style="font-size:1.3rem;letter-spacing:0.04em;color:#f97316;">FIFTY BAR</div>
-    <div class="brand-card-count">Disposables</div>
+    <img class="brand-card-logo" src="images/fifty-bar-logo.webp" alt="Fifty Bar" style="filter:none;opacity:1;">
   </div>` : '';
   grid.innerHTML = razCard + gbCard + lmCard + pachaCard + fiftyCard + brands.map(([brand, count]) =>
     `<div class="brand-card" data-brand="${esc(brand)}">
