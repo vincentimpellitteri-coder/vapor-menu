@@ -1633,40 +1633,21 @@ let activeBrand = null;
 function renderBrandGrid() {
   const products = filteredProducts();
   const brandMap = {};
-  const RAZ_DISP_PAGES = {
-    'RAZ TN9000':   'raz-tn9000.html',
-    'RAZ LTX25000': 'raz-ltx25000.html',
-    'RAZ VUE 50K':  'raz-rx-vue-50k.html',
-    'RAZ RX 50K':   'raz-rx50k.html',
-    'RAZ RYL 35K':  'raz-ryl35k.html',
-  };
-  const RAZ_DISP_SUB = {
-    'RAZ TN9000':   '9,000 Puffs',
-    'RAZ LTX25000': '25,000 Puffs',
-    'RAZ VUE 50K':  '50,000 Puffs',
-    'RAZ RX 50K':   '50,000 Puffs',
-    'RAZ RYL 35K':  '35,000 Puffs',
-  };
-  const razDispSeen = new Set();
+  let razSeen = false;
   products.forEach(p => {
-    if (RAZ_DISP_PAGES[p.brand]) { razDispSeen.add(p.brand); return; }
+    if (p.brand.startsWith('RAZ')) { razSeen = true; return; }
     brandMap[p.brand] = (brandMap[p.brand] || 0) + 1;
   });
   const brands = Object.entries(brandMap).sort((a,b) => a[0].localeCompare(b[0]));
   const grid = document.getElementById('brand-grid');
-  if (!brands.length && !razDispSeen.size) {
+  if (!brands.length && !razSeen) {
     grid.innerHTML = emptyState('🏷', 'No brands yet.');
     return;
   }
-  const razOrder = ['RAZ TN9000', 'RAZ LTX25000', 'RAZ RYL 35K', 'RAZ VUE 50K', 'RAZ RX 50K'];
-  const razCards = razOrder.filter(b => razDispSeen.has(b)).map(b =>
-    `<div class="brand-card" data-link="${RAZ_DISP_PAGES[b]}">
-      <img class="brand-card-logo" src="images/raz-logo.png" alt="RAZ">
-      <div class="brand-card-name" style="font-size:0.85rem;margin-top:4px;">${esc(b)}</div>
-      <div class="brand-card-count">${RAZ_DISP_SUB[b]}</div>
-    </div>`
-  ).join('');
-  grid.innerHTML = razCards + brands.map(([brand, count]) =>
+  const razCard = razSeen ? `<div class="brand-card" data-link="raz.html">
+    <img class="brand-card-logo" src="images/raz-logo.png" alt="RAZ">
+  </div>` : '';
+  grid.innerHTML = razCard + brands.map(([brand, count]) =>
     `<div class="brand-card" data-brand="${esc(brand)}">
       <div class="brand-card-name">${esc(brand)}</div>
       <div class="brand-card-count">${count} product${count !== 1 ? 's' : ''}</div>
