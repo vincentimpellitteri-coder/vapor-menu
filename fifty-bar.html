@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fifty Bar — The Vapor Place</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .back-btn {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00e5ff;
+      border: 1px solid #00e5ff;
+      border-radius: 6px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(0,229,255,0.1); }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 28px 0 36px;
+      justify-content: center;
+    }
+    .product-card {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 20px 24px;
+      text-align: center;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 220px;
+    }
+    .product-card:hover { border-color: #f97316; background: #161616; }
+    .product-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .product-card-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #f97316;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .product-card-sub {
+      font-size: 0.75rem;
+      color: #666;
+    }
+
+    .flavor-table-wrap { overflow-x: auto; }
+    table.flavor-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    table.flavor-table th {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid #333;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: #555;
+      text-transform: uppercase;
+    }
+    table.flavor-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #1e1e1e;
+      color: #ccc;
+    }
+    table.flavor-table tr:hover td { background: #141414; }
+    .td-fruitia {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #f97316;
+      text-transform: uppercase;
+    }
+    .td-v2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #facc15;
+      text-transform: uppercase;
+    }
+    .edition-badge {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.48rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 2px 5px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    .badge-black { background: rgba(30,30,30,0.9); color: #f59e0b; border: 1px solid #78350f; }
+    .badge-white { background: rgba(240,240,240,0.12); color: #d1d5db; border: 1px solid #4b5563; }
+    .badge-special { background: rgba(30,58,138,0.5); color: #93c5fd; border: 1px solid #1e40af; }
+  </style>
+</head>
+<body id="inner-page">
+<div style="position:relative;z-index:1;">
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="The Vapor Place" class="logo-img">
+      </a>
+      <span class="badge-21">21+</span>
+    </div>
+    <nav>
+      <a href="ejuicefinder.html">E-Juice Finder</a>
+      <a href="menu3.html">Sub Ohm &amp; Salt</a>
+      <a href="https://tvp.aglots.com" target="_blank">Full Store</a>
+    </nav>
+  </header>
+
+  <main>
+    <div style="display:flex;align-items:center;margin-top:8px;margin-bottom:6px;">
+      <a href="ejuicefinder.html" class="back-btn">&larr; Back</a>
+      <h1 style="flex:1;text-align:center;margin:0;font-family:'Orbitron',sans-serif;letter-spacing:0.1em;color:#f97316;">FIFTY BAR</h1>
+    </div>
+    <p style="color:#888;margin-bottom:28px;text-align:center;">Disposable Vapes</p>
+
+    <div class="product-grid">
+      <a href="fifty-bar-fruitia-20k.html" class="product-card">
+        <img src="images/fifty-bar-fruitia-group.jpg" alt="Fruitia x Fifty Bar 20K">
+        <div class="product-card-name">Fruitia x Fifty Bar 20K</div>
+        <div class="product-card-sub">20,000 Puffs &middot; 22 Flavors</div>
+      </a>
+      <a href="fifty-bar-v2-20k.html" class="product-card">
+        <img src="images/fifty-bar-v2-group.jpg" alt="Fifty Bar V2 20K">
+        <div class="product-card-name">Fifty Bar V2 20K</div>
+        <div class="product-card-sub">20,000 Puffs &middot; 22 Flavors</div>
+      </a>
+    </div>
+
+    <h2 style="font-family:'Orbitron',sans-serif;font-size:0.8rem;letter-spacing:0.1em;color:#555;text-transform:uppercase;margin-bottom:12px;">All Flavors</h2>
+    <div class="flavor-table-wrap">
+      <table class="flavor-table">
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>Flavor</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Fruitia x Fifty Bar -->
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Apple Cronut</td><td style="color:#666;">Spiced apple filling inside a flaky, sweet croissant-donut pastry.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>B-Pop</td><td style="color:#666;">Classic lollipop — sweet, nostalgic, and bold.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Baja Burst</td><td style="color:#666;">Fizzy blue soda with tropical fruit notes.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Berry Pop</td><td style="color:#666;">Mixed berries with a fizzy candy finish.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Blue Razz Ice</td><td style="color:#666;">Sweet blue raspberry with a crisp icy kick.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Blueberry Pound Cake</td><td style="color:#666;">Warm, buttery pound cake with luscious blueberries.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Bonker Berries</td><td style="color:#666;">Wild mix of sweet and tart berries.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Chocolate Milk</td><td style="color:#666;">Rich, creamy chocolate milk.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Cookie Butter</td><td style="color:#666;">Smooth and creamy spiced cookie spread.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Hawai'i'n Punch</td><td style="color:#666;">Tropical medley of bold, juicy fruits.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Island Punch</td><td style="color:#666;">Tropical citrus and mixed fruit punch.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Peach Cobbler</td><td style="color:#666;">Sweet ripe peaches in a warm buttery cobbler crust.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Polar Ice</td><td style="color:#666;">Icy blast of pure coolness with minty chill.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Sour Batch</td><td style="color:#666;">Tangy and sweet with a sour sugar punch.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Sour Rainbow</td><td style="color:#666;">Rainbow candy with a tangy sour coating.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Southern Tobacco</td><td style="color:#666;">Rich, smooth classic Southern-grown tobacco.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Spearmint</td><td style="color:#666;">Crisp, refreshing spearmint.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Strawberry Beltz</td><td style="color:#666;">Sweet strawberry candy with sour sugar twist.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Strawberry Shortcake</td><td style="color:#666;">Fresh strawberries over whipped cream and shortcake.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Swedish Fish</td><td style="color:#666;">The iconic red gummy candy, perfectly captured.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>Watermelon Ice</td><td style="color:#666;">Fresh watermelon with a crisp icy finish.</td></tr>
+          <tr><td class="td-fruitia">Fruitia 20K</td><td>White Cherry Slushie</td><td style="color:#666;">Sweet white cherry blended into a frosty slushie.</td></tr>
+          <!-- V2 Black Series -->
+          <tr><td class="td-v2">V2 20K</td><td>Blueberry Cereal Donut Milk <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Blueberry-glazed cereal donut in cold sweet milk.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Butterbean <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Smooth, buttery sweetness with a creamy finish.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Cinnamon Funnel Cake <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Warm fried funnel cake with cinnamon sugar.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Gold Tobacco <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Smooth, premium golden tobacco.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Milky Loops <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Fruity rainbow cereal loops in cold sweet milk.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Raspberry Jam <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Sweet, thick raspberry jam — bold and fruity.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Strawberry Cereal Donut Milk <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Strawberry-glazed cereal donut in cold sweet milk.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Strawberry Super Strudel <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Flaky pastry with strawberry jam and iced glaze.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Vanilla Custard <span class="edition-badge badge-black">Black</span></td><td style="color:#666;">Rich, smooth vanilla custard.</td></tr>
+          <!-- V2 White Series -->
+          <tr><td class="td-v2">V2 20K</td><td>Baja Slushie <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Tropical mango slushie with icy citrus finish.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Green Apple Blast <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Crisp tart green apple with juicy sweetness.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Gummy Whip <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Sweet chewy gummy candy with a light whipped finish.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Kiberry Chew <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Kiwi and mixed berry chew candy.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Miami Mint <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Cool citrus-kissed spearmint.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Mint <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Clean, classic cool mint.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>OMG! Smoothie <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Creamy blended tropical fruit smoothie.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Orange Mango Peach <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Fresh orange, ripe mango, and juicy peach.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Rainbow Road <span class="edition-badge badge-white">White</span></td><td style="color:#666;">A rainbow of fruity candy flavors.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Snozzberry <span class="edition-badge badge-white">White</span></td><td style="color:#666;">A whimsical, uniquely sweet berry blend.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Strawmelon Twist <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Strawberry twisted with juicy watermelon.</td></tr>
+          <tr><td class="td-v2">V2 20K</td><td>Watermelon Patch <span class="edition-badge badge-white">White</span></td><td style="color:#666;">Fresh-picked watermelon, sweet and juicy.</td></tr>
+          <!-- Special -->
+          <tr><td class="td-v2">V2 20K</td><td>Texas Mint <span class="edition-badge badge-special">USA Built</span></td><td style="color:#666;">Bold, icy peppermint — the USA-built exclusive.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

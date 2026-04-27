@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruitia x Fifty Bar 20K — The Vapor Place</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .back-btn {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00e5ff;
+      border: 1px solid #00e5ff;
+      border-radius: 6px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(0,229,255,0.1); }
+    h1 span { color: #00e5ff; }
+
+    .flavor-list { list-style: none; padding: 0; margin: 24px 0; }
+    .flavor-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #222;
+      transition: background 0.15s;
+    }
+    .flavor-row:hover { background: #1a1a1a; }
+    .thumb-wrap { flex-shrink: 0; cursor: pointer; }
+    .thumb-wrap img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      display: block;
+      transition: border-color 0.2s;
+    }
+    .thumb-wrap:hover img { border-color: #00e5ff; }
+    .no-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 6px;
+      background: #1a1a1a;
+      border: 1px dashed #333;
+      flex-shrink: 0;
+    }
+    .col-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #f97316;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 48px;
+    }
+    .col-model {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #555;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 56px;
+    }
+    .col-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      flex-shrink: 0;
+      min-width: 200px;
+    }
+    .col-desc { font-size: 0.82rem; color: #888; }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,229,255,0.15);
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+  </style>
+</head>
+<body id="inner-page">
+<div style="position:relative;z-index:1;">
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="The Vapor Place" class="logo-img">
+      </a>
+      <span class="badge-21">21+</span>
+    </div>
+    <nav>
+      <a href="ejuicefinder.html">E-Juice Finder</a>
+      <a href="menu3.html">Sub Ohm &amp; Salt</a>
+      <a href="https://tvp.aglots.com" target="_blank">Full Store</a>
+    </nav>
+  </header>
+
+  <main>
+    <div style="display:flex;align-items:center;margin-top:8px;margin-bottom:6px;">
+      <a href="fifty-bar.html" class="back-btn">&larr; Back to Fifty Bar</a>
+      <h1 style="flex:1;text-align:center;margin:0;">FRUITIA <span>x FIFTY BAR 20K</span></h1>
+    </div>
+    <p style="color:#888;margin-bottom:12px;text-align:center;">20,000 Puffs &nbsp;&middot;&nbsp; 16mL &nbsp;&middot;&nbsp; 5% Nicotine &nbsp;&middot;&nbsp; 22 Flavors</p>
+
+    <ul class="flavor-list">
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-b-pop.jpg')"><img src="images/fifty-bar-fruitia-b-pop.jpg" alt="B-Pop"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">B-Pop</div>
+        <div class="col-desc">Classic lollipop with a hard shell and chewy center — sweet, nostalgic, and bold.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-baja-burst.jpg')"><img src="images/fifty-bar-fruitia-baja-burst.jpg" alt="Baja Burst"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Baja Burst</div>
+        <div class="col-desc">Fizzy blue soda with tropical fruit notes for a refreshing, vibrant splash.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Berry Pop</div>
+        <div class="col-desc">A bright, bubbly blend of mixed berries with a fizzy candy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Blue Razz Ice</div>
+        <div class="col-desc">Sweet blue raspberry candy with a crisp, icy kick.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-blueberry-pound-cake.jpg')"><img src="images/fifty-bar-fruitia-blueberry-pound-cake.jpg" alt="Blueberry Pound Cake"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Blueberry Pound Cake</div>
+        <div class="col-desc">Warm, buttery pound cake blended with luscious blueberries.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-bonker-berries.jpg')"><img src="images/fifty-bar-fruitia-bonker-berries.jpg" alt="Bonker Berries"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Bonker Berries</div>
+        <div class="col-desc">A wild mix of sweet and tart berries with a bold, punchy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Apple Cronut</div>
+        <div class="col-desc">Spiced apple filling inside a flaky, sweet croissant-donut pastry.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Chocolate Milk</div>
+        <div class="col-desc">Rich, creamy chocolate milk — smooth and indulgent.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-cookie-butter.jpg')"><img src="images/fifty-bar-fruitia-cookie-butter.jpg" alt="Cookie Butter"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Cookie Butter</div>
+        <div class="col-desc">Smooth and creamy with the irresistible spiced sweetness of cookie spread.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-hawaiin-punch.jpg')"><img src="images/fifty-bar-fruitia-hawaiin-punch.jpg" alt="Hawai'i'n Punch"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Hawai'i'n Punch</div>
+        <div class="col-desc">A tropical medley of bold, juicy fruits in a sweet punch blend.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Island Punch</div>
+        <div class="col-desc">A tropical island blend of citrus and mixed fruit punch.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Peach Cobbler</div>
+        <div class="col-desc">Sweet, ripe peaches baked into a warm, buttery cobbler crust.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-polar-ice.jpg')"><img src="images/fifty-bar-fruitia-polar-ice.jpg" alt="Polar Ice"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Polar Ice</div>
+        <div class="col-desc">An icy blast of pure coolness with a refreshing minty chill.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-sour-batch.jpg')"><img src="images/fifty-bar-fruitia-sour-batch.jpg" alt="Sour Batch"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Sour Batch</div>
+        <div class="col-desc">Tangy and sweet with a candy-inspired twist and a sour sugar punch.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Sour Rainbow</div>
+        <div class="col-desc">Rainbow candy with a tangy sour coating and bright fruit sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-southern-tobacco.jpg')"><img src="images/fifty-bar-fruitia-southern-tobacco.jpg" alt="Southern Tobacco"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Southern Tobacco</div>
+        <div class="col-desc">Rich, smooth, and earthy — the essence of classic Southern-grown tobacco.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-spearmint.jpg')"><img src="images/fifty-bar-fruitia-spearmint.jpg" alt="Spearmint"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Spearmint</div>
+        <div class="col-desc">Crisp and refreshing spearmint with the perfect hint of sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-strawberry-beltz.jpg')"><img src="images/fifty-bar-fruitia-strawberry-beltz.jpg" alt="Strawberry Beltz"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Strawberry Beltz</div>
+        <div class="col-desc">Sweet and tangy strawberry candy with a zesty sour sugar twist.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Strawberry Shortcake</div>
+        <div class="col-desc">Fresh strawberries layered over sweet whipped cream and soft shortcake.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-fruitia-swedish-fish.jpg')"><img src="images/fifty-bar-fruitia-swedish-fish.jpg" alt="Swedish Fish"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Swedish Fish</div>
+        <div class="col-desc">Soft, chewy, and fruity — the iconic red gummy candy, perfectly captured.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">Watermelon Ice</div>
+        <div class="col-desc">Fresh summer watermelon with a crisp, icy cooling finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">FRUITIA</div>
+        <div class="col-name">White Cherry Slushie</div>
+        <div class="col-desc">Sweet white cherry blended into a frosty, icy slushie.</div>
+      </li>
+
+    </ul>
+  </main>
+
+</div>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fifty Bar V2 20K — The Vapor Place</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .back-btn {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00e5ff;
+      border: 1px solid #00e5ff;
+      border-radius: 6px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(0,229,255,0.1); }
+    h1 span { color: #00e5ff; }
+
+    .flavor-list { list-style: none; padding: 0; margin: 24px 0; }
+    .flavor-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #222;
+      transition: background 0.15s;
+    }
+    .flavor-row:hover { background: #1a1a1a; }
+    .thumb-wrap { flex-shrink: 0; cursor: pointer; }
+    .thumb-wrap img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      display: block;
+      transition: border-color 0.2s;
+    }
+    .thumb-wrap:hover img { border-color: #00e5ff; }
+    .no-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 6px;
+      background: #1a1a1a;
+      border: 1px dashed #333;
+      flex-shrink: 0;
+    }
+    .col-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #f97316;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 48px;
+    }
+    .col-model {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #555;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 36px;
+    }
+    .col-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      flex-shrink: 0;
+      min-width: 200px;
+    }
+    .col-desc { font-size: 0.82rem; color: #888; }
+
+    .edition-badge {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 2px 6px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-black {
+      background: rgba(30,30,30,0.9);
+      color: #f59e0b;
+      border: 1px solid #78350f;
+    }
+    .badge-white {
+      background: rgba(240,240,240,0.12);
+      color: #d1d5db;
+      border: 1px solid #4b5563;
+    }
+    .badge-special {
+      background: rgba(30,58,138,0.5);
+      color: #93c5fd;
+      border: 1px solid #1e40af;
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,229,255,0.15);
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+  </style>
+</head>
+<body id="inner-page">
+<div style="position:relative;z-index:1;">
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="The Vapor Place" class="logo-img">
+      </a>
+      <span class="badge-21">21+</span>
+    </div>
+    <nav>
+      <a href="ejuicefinder.html">E-Juice Finder</a>
+      <a href="menu3.html">Sub Ohm &amp; Salt</a>
+      <a href="https://tvp.aglots.com" target="_blank">Full Store</a>
+    </nav>
+  </header>
+
+  <main>
+    <div style="display:flex;align-items:center;margin-top:8px;margin-bottom:6px;">
+      <a href="fifty-bar.html" class="back-btn">&larr; Back to Fifty Bar</a>
+      <h1 style="flex:1;text-align:center;margin:0;">FIFTY BAR <span>V2 20K</span></h1>
+    </div>
+    <p style="color:#888;margin-bottom:4px;text-align:center;">20,000 Puffs &nbsp;&middot;&nbsp; 16mL &nbsp;&middot;&nbsp; 5% Nicotine &nbsp;&middot;&nbsp; 22 Flavors</p>
+    <p style="color:#555;margin-bottom:12px;text-align:center;font-size:0.8rem;">Built in the USA &nbsp;&middot;&nbsp; Dual Parallel Mesh Coil &nbsp;&middot;&nbsp; Active Boost Mode</p>
+
+    <ul class="flavor-list">
+
+      <!-- Black Series -->
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-blueberry-cereal-donut-milk.jpg')"><img src="images/fifty-bar-v2-blueberry-cereal-donut-milk.jpg" alt="Blueberry Cereal Donut Milk"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Blueberry Cereal Donut Milk <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Blueberry-glazed cereal donut soaked in sweet cold milk.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Butterbean <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Smooth, buttery sweetness with a rich, creamy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-cinnamon-funnel-cake.jpg')"><img src="images/fifty-bar-v2-cinnamon-funnel-cake.jpg" alt="Cinnamon Funnel Cake"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Cinnamon Funnel Cake <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Warm fried funnel cake dusted with cinnamon sugar.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-gold-tobacco.jpg')"><img src="images/fifty-bar-v2-gold-tobacco.jpg" alt="Gold Tobacco"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Gold Tobacco <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Smooth, premium golden tobacco with a rich, classic finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-milky-loops.jpg')"><img src="images/fifty-bar-v2-milky-loops.jpg" alt="Milky Loops"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Milky Loops <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Fruity rainbow cereal loops drenched in cold, sweet milk.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Raspberry Jam <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Sweet, thick raspberry jam — bold and fruity with a jammy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-strawberry-cereal-donut-milk.jpg')"><img src="images/fifty-bar-v2-strawberry-cereal-donut-milk.jpg" alt="Strawberry Cereal Donut Milk"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Strawberry Cereal Donut Milk <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Strawberry-glazed cereal donut swimming in sweet cold milk.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Strawberry Super Strudel <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Flaky pastry filled with sweet strawberry jam and iced glaze.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-vanilla-custard.jpg')"><img src="images/fifty-bar-v2-vanilla-custard.jpg" alt="Vanilla Custard"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Vanilla Custard <span class="edition-badge badge-black">Black</span></div>
+        <div class="col-desc">Rich, smooth vanilla custard — creamy and indulgent.</div>
+      </li>
+
+      <!-- White Series -->
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-baja-slushie.jpg')"><img src="images/fifty-bar-v2-baja-slushie.jpg" alt="Baja Slushie"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Baja Slushie <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">Tropical mango slushie with a bright, icy citrus finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-green-apple-blast.jpg')"><img src="images/fifty-bar-v2-green-apple-blast.jpg" alt="Green Apple Blast"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Green Apple Blast <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">Crisp, tart green apple with a juicy, blasted sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-gummy-whip.jpg')"><img src="images/fifty-bar-v2-gummy-whip.jpg" alt="Gummy Whip"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Gummy Whip <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">Sweet, chewy gummy candy swirled with a light whipped finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-kiberry-chew.jpg')"><img src="images/fifty-bar-v2-kiberry-chew.jpg" alt="Kiberry Chew"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Kiberry Chew <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">Kiwi and mixed berry chew candy — tangy, sweet, and fruity.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Miami Mint <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">Cool, citrus-kissed spearmint with a smooth, refreshing exhale.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-mint.jpg')"><img src="images/fifty-bar-v2-mint.jpg" alt="Mint"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Mint <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">Clean, classic mint — cool and refreshingly simple.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-omg-smoothie.jpg')"><img src="images/fifty-bar-v2-omg-smoothie.jpg" alt="OMG! Smoothie"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">OMG! Smoothie <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">A creamy blended fruit smoothie with a tropical, sweet punch.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Orange Mango Peach <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">A tropical trio of fresh orange, ripe mango, and juicy peach.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-rainbow-road.jpg')"><img src="images/fifty-bar-v2-rainbow-road.jpg" alt="Rainbow Road"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Rainbow Road <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">A rainbow of fruity candy flavors all in one colorful ride.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Snozzberry <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">A mysterious, whimsical berry blend — uniquely sweet and fruity.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-strawmelon-twist.jpg')"><img src="images/fifty-bar-v2-strawmelon-twist.jpg" alt="Strawmelon Twist"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Strawmelon Twist <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">Sweet strawberry twisted with juicy watermelon in a bold summer blend.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-watermelon-patch.jpg')"><img src="images/fifty-bar-v2-watermelon-patch.jpg" alt="Watermelon Patch"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Watermelon Patch <span class="edition-badge badge-white">White</span></div>
+        <div class="col-desc">Fresh-picked watermelon straight from the patch — sweet and juicy.</div>
+      </li>
+
+      <!-- Special -->
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/fifty-bar-v2-texas-mint.jpg')"><img src="images/fifty-bar-v2-texas-mint.jpg" alt="Texas Mint"></div>
+        <div class="col-brand">FIFTY</div><div class="col-model">V2</div>
+        <div class="col-name">Texas Mint <span class="edition-badge badge-special">USA Built</span></div>
+        <div class="col-desc">Bold, icy peppermint — the USA-built Texas exclusive.</div>
+      </li>
+
+    </ul>
+  </main>
+
+</div>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
