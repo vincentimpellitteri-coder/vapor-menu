@@ -1616,28 +1616,47 @@ let activeBrand = null;
 function renderBrandGrid() {
   const products = filteredProducts();
   const brandMap = {};
-  let razSeen = false;
+  const RAZ_DISP_PAGES = {
+    'RAZ TN9000':   'raz-tn9000.html',
+    'RAZ LTX25000': 'raz-ltx25000.html',
+    'RAZ VUE 50K':  'raz-rx-vue-50k.html',
+    'RAZ RX 50K':   'raz-rx50k.html',
+  };
+  const RAZ_DISP_SUB = {
+    'RAZ TN9000':   '9,000 Puffs',
+    'RAZ LTX25000': '25,000 Puffs',
+    'RAZ VUE 50K':  '50,000 Puffs',
+    'RAZ RX 50K':   '50,000 Puffs',
+  };
+  const razDispSeen = new Set();
   products.forEach(p => {
-    if (p.brand.startsWith('RAZ')) { razSeen = true; return; }
+    if (RAZ_DISP_PAGES[p.brand]) { razDispSeen.add(p.brand); return; }
     brandMap[p.brand] = (brandMap[p.brand] || 0) + 1;
   });
   const brands = Object.entries(brandMap).sort((a,b) => a[0].localeCompare(b[0]));
   const grid = document.getElementById('brand-grid');
-  if (!brands.length && !razSeen) {
+  if (!brands.length && !razDispSeen.size) {
     grid.innerHTML = emptyState('🏷', 'No brands yet.');
     return;
   }
-  const razCard = razSeen ? `<div class="brand-card" data-brand="RAZ" onclick="window.location.href='raz.html'">
-    <img class="brand-card-logo" src="images/raz-logo.png" alt="RAZ">
-    <div class="brand-card-count" style="line-height:1.8;">TN9000<br>LTX25000<br>RX VUE 50K<br>RX 50K</div>
-  </div>` : '';
-  grid.innerHTML = razCard + brands.map(([brand, count]) =>
+  const razOrder = ['RAZ TN9000', 'RAZ LTX25000', 'RAZ VUE 50K', 'RAZ RX 50K'];
+  const razCards = razOrder.filter(b => razDispSeen.has(b)).map(b =>
+    `<div class="brand-card" data-link="${RAZ_DISP_PAGES[b]}">
+      <img class="brand-card-logo" src="images/raz-logo.png" alt="RAZ">
+      <div class="brand-card-name" style="font-size:0.85rem;margin-top:4px;">${esc(b)}</div>
+      <div class="brand-card-count">${RAZ_DISP_SUB[b]}</div>
+    </div>`
+  ).join('');
+  grid.innerHTML = razCards + brands.map(([brand, count]) =>
     `<div class="brand-card" data-brand="${esc(brand)}">
       <div class="brand-card-name">${esc(brand)}</div>
       <div class="brand-card-count">${count} product${count !== 1 ? 's' : ''}</div>
     </div>`
   ).join('');
-  grid.querySelectorAll('.brand-card:not([data-brand="RAZ"])').forEach(card => {
+  grid.querySelectorAll('.brand-card[data-link]').forEach(card => {
+    card.addEventListener('click', () => window.location.href = card.dataset.link);
+  });
+  grid.querySelectorAll('.brand-card[data-brand]').forEach(card => {
     card.addEventListener('click', () => openBrandDrill(card.dataset.brand));
   });
 }
