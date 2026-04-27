@@ -1633,18 +1633,19 @@ let activeBrand = null;
 function renderBrandGrid() {
   const products = filteredProducts();
   const brandMap = {};
-  let razSeen = false;
+  const RAZ_DISP = new Set(['RAZ TN9000','RAZ LTX25000','RAZ VUE 50K','RAZ RX 50K','RAZ RYL 35K']);
+  let razDispSeen = false;
   products.forEach(p => {
-    if (p.brand.startsWith('RAZ')) { razSeen = true; return; }
+    if (RAZ_DISP.has(p.brand)) { razDispSeen = true; return; }
     brandMap[p.brand] = (brandMap[p.brand] || 0) + 1;
   });
   const brands = Object.entries(brandMap).sort((a,b) => a[0].localeCompare(b[0]));
   const grid = document.getElementById('brand-grid');
-  if (!brands.length && !razSeen) {
+  if (!brands.length && !razDispSeen) {
     grid.innerHTML = emptyState('🏷', 'No brands yet.');
     return;
   }
-  const razCard = razSeen ? `<div class="brand-card" data-link="raz.html">
+  const razCard = razDispSeen ? `<div class="brand-card" data-link="raz.html">
     <img class="brand-card-logo" src="images/raz-logo.png" alt="RAZ">
   </div>` : '';
   grid.innerHTML = razCard + brands.map(([brand, count]) =>
