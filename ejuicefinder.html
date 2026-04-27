@@ -677,8 +677,8 @@
   </div>
 
   <nav id="tab-bar">
-    <button class="tab-btn active" data-tab="flavor">🍓 Flavor</button>
-    <button class="tab-btn" data-tab="brand">🏷 Brand</button>
+    <button class="tab-btn active" data-tab="brand">🏷 Brand</button>
+    <button class="tab-btn" data-tab="flavor">🍓 Flavor</button>
     <button class="tab-btn" data-tab="top10">⭐ Top 10</button>
     <button class="tab-btn" data-tab="deals">🔥 Deals</button>
   </nav>
@@ -2048,7 +2048,7 @@ function init() {
   loadFromServer(); // fire and forget — shop info only, non-blocking
   seedIfEmpty();
   renderShopHeader();
-  switchTab('flavor');
+  switchTab('brand');
   if (new URLSearchParams(window.location.search).has('admin')) window.location.href = 'admin-stock.html';
 }
 init();
