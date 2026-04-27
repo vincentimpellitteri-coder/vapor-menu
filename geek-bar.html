@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geek Bar — The Vapor Place</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .back-btn {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00e5ff;
+      border: 1px solid #00e5ff;
+      border-radius: 6px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(0,229,255,0.1); }
+    .back-bar { margin: 24px 0; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(174px, 1fr));
+      gap: 14px;
+      margin: 22px 0;
+    }
+    .product-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 9px;
+      padding: 22px 14px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .product-card:hover { border-color: #00e5ff; background: #1e1e1e; }
+    .product-card img {
+      width: 100%;
+      max-height: 134px;
+      object-fit: contain;
+      border-radius: 5px;
+      margin-bottom: 11px;
+    }
+    .product-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #f0f0f0;
+      margin-bottom: 8px;
+    }
+    .product-sub { font-size: 0.85rem; color: #888; }
+    .flavor-count { font-size: 0.75rem; color: #aaa; margin-top: 4px; }
+    .more-info-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 12px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.36rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00e5ff;
+      border: 1px solid #00e5ff;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .product-card:hover .more-info-btn { background: #00e5ff; color: #000; }
+    h1 span { color: #00e5ff; }
+
+    .flavor-table-wrap { margin: 40px 0 20px; overflow-x: auto; }
+    .flavor-table-wrap h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+    .flavor-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .flavor-table thead th {
+      background: #e5e7eb;
+      color: #111827;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+      border: 1px solid #d1d1d6;
+    }
+    .flavor-table tbody td {
+      padding: 8px 14px;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      vertical-align: top;
+    }
+    .flavor-table tbody tr:nth-child(even) td { background: #f9fafb; }
+    .flavor-table tbody tr:hover td { background: #eff6ff; }
+    .td-model {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .td-pulse   { color: #0284c7; }
+    .td-pulse-x { color: #7b5ea7; }
+    .td-num { color: #9ca3af; font-size: 0.78rem; text-align: center; }
+  </style>
+</head>
+<body id="inner-page">
+<div style="position:relative;z-index:1;">
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="The Vapor Place" class="logo-img">
+      </a>
+      <span class="badge-21">21+</span>
+    </div>
+    <nav>
+      <a href="ejuicefinder.html">E-Juice Finder</a>
+      <a href="menu3.html">Sub Ohm &amp; Salt</a>
+      <a href="https://tvp.aglots.com" target="_blank">Full Store</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="back-bar">
+      <a href="ejuicefinder.html" class="back-btn">&larr; Back to E-Juice Finder</a>
+    </div>
+
+    <h1 style="font-size:2.08rem;text-align:center;"><span>Geek Bar</span> Disposables</h1>
+
+    <div class="product-grid">
+
+      <a href="geek-bar-pulse.html" class="product-card">
+        <img src="images/geek-bar-pulse-watermelon-ice.jpg" alt="Geek Bar Pulse">
+        <div class="product-name">Pulse</div>
+        <div class="product-sub">15,000 Puffs &nbsp;&middot;&nbsp; 16mL</div>
+        <div class="flavor-count">37 Flavors</div>
+        <span class="more-info-btn">More Info</span>
+      </a>
+
+      <a href="geek-bar-pulse-x.html" class="product-card">
+        <img src="images/geek-bar-pulse-x-blue-razz-ice.jpg" alt="Geek Bar Pulse X">
+        <div class="product-name">Pulse X</div>
+        <div class="product-sub">25,000 Puffs</div>
+        <div class="flavor-count">26 Flavors</div>
+        <span class="more-info-btn">More Info</span>
+      </a>
+
+    </div>
+
+    <div class="flavor-table-wrap">
+      <h2>All Geek Bar Flavors</h2>
+      <table class="flavor-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Model</th>
+            <th>Flavor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Pulse Standard -->
+          <tr><td class="td-num">1</td><td class="td-model td-pulse">PULSE</td><td>B Pop</td></tr>
+          <tr><td class="td-num">2</td><td class="td-model td-pulse">PULSE</td><td>Black Cherry</td></tr>
+          <tr><td class="td-num">3</td><td class="td-model td-pulse">PULSE</td><td>Blue Mint</td></tr>
+          <tr><td class="td-num">4</td><td class="td-model td-pulse">PULSE</td><td>Blue Razz Ice</td></tr>
+          <tr><td class="td-num">5</td><td class="td-model td-pulse">PULSE</td><td>California Cherry</td></tr>
+          <tr><td class="td-num">6</td><td class="td-model td-pulse">PULSE</td><td>Cherry Bomb</td></tr>
+          <tr><td class="td-num">7</td><td class="td-model td-pulse">PULSE</td><td>Dragon Melon</td></tr>
+          <tr><td class="td-num">8</td><td class="td-model td-pulse">PULSE</td><td>Fcuking Fab</td></tr>
+          <tr><td class="td-num">9</td><td class="td-model td-pulse">PULSE</td><td>Grape B Pop</td></tr>
+          <tr><td class="td-num">10</td><td class="td-model td-pulse">PULSE</td><td>Hunted Blueberry</td></tr>
+          <tr><td class="td-num">11</td><td class="td-model td-pulse">PULSE</td><td>Juicy Peach Ice</td></tr>
+          <tr><td class="td-num">12</td><td class="td-model td-pulse">PULSE</td><td>Meta Moon</td></tr>
+          <tr><td class="td-num">13</td><td class="td-model td-pulse">PULSE</td><td>Mexico Mango</td></tr>
+          <tr><td class="td-num">14</td><td class="td-model td-pulse">PULSE</td><td>Miami Mint</td></tr>
+          <tr><td class="td-num">15</td><td class="td-model td-pulse">PULSE</td><td>Pink Lemonade</td></tr>
+          <tr><td class="td-num">16</td><td class="td-model td-pulse">PULSE</td><td>Sour Apple Ice</td></tr>
+          <tr><td class="td-num">17</td><td class="td-model td-pulse">PULSE</td><td>Strawberry Banana</td></tr>
+          <tr><td class="td-num">18</td><td class="td-model td-pulse">PULSE</td><td>Strawberry Mango</td></tr>
+          <tr><td class="td-num">19</td><td class="td-model td-pulse">PULSE</td><td>Tropical Rainbow Blast</td></tr>
+          <tr><td class="td-num">20</td><td class="td-model td-pulse">PULSE</td><td>Watermelon Ice</td></tr>
+          <tr><td class="td-num">21</td><td class="td-model td-pulse">PULSE</td><td>White Gummy Ice</td></tr>
+          <!-- Pulse Sour -->
+          <tr><td class="td-num">22</td><td class="td-model td-pulse">PULSE</td><td>Sour Blue Dust</td></tr>
+          <tr><td class="td-num">23</td><td class="td-model td-pulse">PULSE</td><td>Sour Cranapple</td></tr>
+          <tr><td class="td-num">24</td><td class="td-model td-pulse">PULSE</td><td>Sour Gush</td></tr>
+          <tr><td class="td-num">25</td><td class="td-model td-pulse">PULSE</td><td>Sour Strawberry</td></tr>
+          <!-- Pulse Frozen -->
+          <tr><td class="td-num">26</td><td class="td-model td-pulse">PULSE</td><td>Frozen Cherry Apple</td></tr>
+          <tr><td class="td-num">27</td><td class="td-model td-pulse">PULSE</td><td>Frozen Pina Colada</td></tr>
+          <tr><td class="td-num">28</td><td class="td-model td-pulse">PULSE</td><td>Frozen Strawberry</td></tr>
+          <tr><td class="td-num">29</td><td class="td-model td-pulse">PULSE</td><td>Frozen Watermelon</td></tr>
+          <tr><td class="td-num">30</td><td class="td-model td-pulse">PULSE</td><td>Frozen White Grape</td></tr>
+          <!-- Pulse Mintz -->
+          <tr><td class="td-num">31</td><td class="td-model td-pulse">PULSE</td><td>Blackmintz</td></tr>
+          <tr><td class="td-num">32</td><td class="td-model td-pulse">PULSE</td><td>Creamymintz</td></tr>
+          <tr><td class="td-num">33</td><td class="td-model td-pulse">PULSE</td><td>Peppermintz</td></tr>
+          <!-- Pulse Savers -->
+          <tr><td class="td-num">34</td><td class="td-model td-pulse">PULSE</td><td>Savers Drop Sour</td></tr>
+          <tr><td class="td-num">35</td><td class="td-model td-pulse">PULSE</td><td>Savers Orange Mint</td></tr>
+          <tr><td class="td-num">36</td><td class="td-model td-pulse">PULSE</td><td>Savers Pineapple</td></tr>
+          <tr><td class="td-num">37</td><td class="td-model td-pulse">PULSE</td><td>Savers Wild Berry</td></tr>
+          <!-- Pulse X -->
+          <tr><td class="td-num">38</td><td class="td-model td-pulse-x">PULSE X</td><td>Banana Taffy Freeze</td></tr>
+          <tr><td class="td-num">39</td><td class="td-model td-pulse-x">PULSE X</td><td>Blackberry Blueberry</td></tr>
+          <tr><td class="td-num">40</td><td class="td-model td-pulse-x">PULSE X</td><td>Blue Rancher</td></tr>
+          <tr><td class="td-num">41</td><td class="td-model td-pulse-x">PULSE X</td><td>Blue Razz Ice</td></tr>
+          <tr><td class="td-num">42</td><td class="td-model td-pulse-x">PULSE X</td><td>Cool Mint</td></tr>
+          <tr><td class="td-num">43</td><td class="td-model td-pulse-x">PULSE X</td><td>Grapefruit Refresher</td></tr>
+          <tr><td class="td-num">44</td><td class="td-model td-pulse-x">PULSE X</td><td>Lemon Heads</td></tr>
+          <tr><td class="td-num">45</td><td class="td-model td-pulse-x">PULSE X</td><td>Lime Berry Orange</td></tr>
+          <tr><td class="td-num">46</td><td class="td-model td-pulse-x">PULSE X</td><td>Raspberry Peach Lime</td></tr>
+          <tr><td class="td-num">47</td><td class="td-model td-pulse-x">PULSE X</td><td>Sour Apple Ice</td></tr>
+          <tr><td class="td-num">48</td><td class="td-model td-pulse-x">PULSE X</td><td>Sour Mango Pineapple</td></tr>
+          <tr><td class="td-num">49</td><td class="td-model td-pulse-x">PULSE X</td><td>Sour Straws</td></tr>
+          <tr><td class="td-num">50</td><td class="td-model td-pulse-x">PULSE X</td><td>Watermelon Ice</td></tr>
+          <tr><td class="td-num">51</td><td class="td-model td-pulse-x">PULSE X</td><td>White Peach Raspberry</td></tr>
+          <tr><td class="td-num">52</td><td class="td-model td-pulse-x">PULSE X</td><td>Jam Blueberry</td></tr>
+          <tr><td class="td-num">53</td><td class="td-model td-pulse-x">PULSE X</td><td>Jam Orange</td></tr>
+          <tr><td class="td-num">54</td><td class="td-model td-pulse-x">PULSE X</td><td>Jam Peach</td></tr>
+          <tr><td class="td-num">55</td><td class="td-model td-pulse-x">PULSE X</td><td>Jam Raspberry</td></tr>
+          <tr><td class="td-num">56</td><td class="td-model td-pulse-x">PULSE X</td><td>Meteor ATL Mint</td></tr>
+          <tr><td class="td-num">57</td><td class="td-model td-pulse-x">PULSE X</td><td>Meteor Orange Dragon</td></tr>
+          <tr><td class="td-num">58</td><td class="td-model td-pulse-x">PULSE X</td><td>Meteor Pink Blue</td></tr>
+          <tr><td class="td-num">59</td><td class="td-model td-pulse-x">PULSE X</td><td>Slush Cola</td></tr>
+          <tr><td class="td-num">60</td><td class="td-model td-pulse-x">PULSE X</td><td>Slush Grape</td></tr>
+          <tr><td class="td-num">61</td><td class="td-model td-pulse-x">PULSE X</td><td>Slush Orange</td></tr>
+          <tr><td class="td-num">62</td><td class="td-model td-pulse-x">PULSE X</td><td>Slush Peach Perfect</td></tr>
+          <tr><td class="td-num">63</td><td class="td-model td-pulse-x">PULSE X</td><td>Slush Wild Cherry</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+</div>
+</body>
+</html>

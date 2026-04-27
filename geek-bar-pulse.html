@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geek Bar Pulse — The Vapor Place</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .back-btn {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00e5ff;
+      border: 1px solid #00e5ff;
+      border-radius: 6px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(0,229,255,0.1); }
+    h1 span { color: #00e5ff; }
+
+    .flavor-list { list-style: none; padding: 0; margin: 24px 0; }
+    .flavor-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #222;
+      transition: background 0.15s;
+    }
+    .flavor-row:hover { background: #1a1a1a; }
+    .thumb-wrap { flex-shrink: 0; cursor: pointer; }
+    .thumb-wrap img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      display: block;
+      transition: border-color 0.2s;
+    }
+    .thumb-wrap:hover img { border-color: #00e5ff; }
+    .no-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 6px;
+      background: #1a1a1a;
+      border: 1px dashed #333;
+      flex-shrink: 0;
+    }
+    .col-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #00e5ff;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 40px;
+    }
+    .col-model {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #555;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 52px;
+    }
+    .col-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      flex-shrink: 0;
+      min-width: 200px;
+    }
+    .col-desc { font-size: 0.82rem; color: #888; }
+    .col-edition {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .edition-sour   { background: rgba(255,190,0,0.12); color: #ffbe00; border: 1px solid rgba(255,190,0,0.35); }
+    .edition-frozen { background: rgba(100,200,255,0.12); color: #64c8ff; border: 1px solid rgba(100,200,255,0.35); }
+    .edition-mintz  { background: rgba(0,220,120,0.12); color: #00dc78; border: 1px solid rgba(0,220,120,0.35); }
+    .edition-savers { background: rgba(160,80,255,0.12); color: #a050ff; border: 1px solid rgba(160,80,255,0.35); }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,229,255,0.15);
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+  </style>
+</head>
+<body id="inner-page">
+<div style="position:relative;z-index:1;">
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="The Vapor Place" class="logo-img">
+      </a>
+      <span class="badge-21">21+</span>
+    </div>
+    <nav>
+      <a href="ejuicefinder.html">E-Juice Finder</a>
+      <a href="menu3.html">Sub Ohm &amp; Salt</a>
+      <a href="https://tvp.aglots.com" target="_blank">Full Store</a>
+    </nav>
+  </header>
+
+  <main>
+    <div style="display:flex;align-items:center;margin-top:8px;margin-bottom:6px;">
+      <a href="geek-bar.html" class="back-btn">&larr; Back to Geek Bar</a>
+      <h1 style="flex:1;text-align:center;margin:0;">GEEK BAR <span>PULSE</span></h1>
+    </div>
+    <p style="color:#888;margin-bottom:12px;text-align:center;">15,000 Puffs &nbsp;&middot;&nbsp; 16mL &nbsp;&middot;&nbsp; 5% Nicotine &nbsp;&middot;&nbsp; 37 Flavors</p>
+
+    <ul class="flavor-list">
+
+      <!-- Standard Edition -->
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-b-pop.jpg')"><img src="images/geek-bar-pulse-b-pop.jpg" alt="B Pop"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">B Pop</div>
+        <div class="col-desc">A sweet, fizzy mix of pineapple, banana, and bubblegum candy.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Black Cherry</div>
+        <div class="col-desc">Bold, dark cherry with a rich, juicy sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Blue Mint</div>
+        <div class="col-desc">Cool blueberry and refreshing mint for a crisp, fruity chill.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-blue-razz-ice.png')"><img src="images/geek-bar-pulse-blue-razz-ice.png" alt="Blue Razz Ice"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Blue Razz Ice</div>
+        <div class="col-desc">Classic blue raspberry candy with a sharp, icy kick.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">California Cherry</div>
+        <div class="col-desc">Sun-ripened cherry with a smooth, sweet finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Cherry Bomb</div>
+        <div class="col-desc">An explosive burst of sweet and tart cherries.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Dragon Melon</div>
+        <div class="col-desc">Exotic dragonfruit and ripe watermelon with a tropical finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-fcuking-fab.png')"><img src="images/geek-bar-pulse-fcuking-fab.png" alt="Fcuking Fab"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Fcuking Fab</div>
+        <div class="col-desc">A bold and vibrant blend of tropical mixed fruits.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Grape B Pop</div>
+        <div class="col-desc">Grape-flavored bubblegum with a sweet, nostalgic pop.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-hunted-blueberry.jpg')"><img src="images/geek-bar-pulse-hunted-blueberry.jpg" alt="Hunted Blueberry"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Hunted Blueberry</div>
+        <div class="col-desc">Deep, wild blueberry with an intensely sweet, jammy character.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-juicy-peach-ice.jpg')"><img src="images/geek-bar-pulse-juicy-peach-ice.jpg" alt="Juicy Peach Ice"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Juicy Peach Ice</div>
+        <div class="col-desc">Fresh, succulent peach with a cool icy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-meta-moon.png')"><img src="images/geek-bar-pulse-meta-moon.png" alt="Meta Moon"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Meta Moon</div>
+        <div class="col-desc">A cosmic trio of papaya, strawberry, and watermelon.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-mexico-mango.png')"><img src="images/geek-bar-pulse-mexico-mango.png" alt="Mexico Mango"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Mexico Mango</div>
+        <div class="col-desc">Ripe, bold mango with a slightly tart, tropical kick.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-miami-mint.png')"><img src="images/geek-bar-pulse-miami-mint.png" alt="Miami Mint"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Miami Mint</div>
+        <div class="col-desc">Citrus-kissed spearmint with a smooth, cooling exhale.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Pink Lemonade</div>
+        <div class="col-desc">Strawberry-infused pink lemonade, tangy and refreshingly sweet.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-sour-apple-ice.jpg')"><img src="images/geek-bar-pulse-sour-apple-ice.jpg" alt="Sour Apple Ice"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Sour Apple Ice</div>
+        <div class="col-desc">Sharp green apple with a tart sour edge and icy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-strawberry-banana.png')"><img src="images/geek-bar-pulse-strawberry-banana.png" alt="Strawberry Banana"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Strawberry Banana</div>
+        <div class="col-desc">A smooth classic blend of ripe strawberry and creamy banana.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-strawberry-mango.png')"><img src="images/geek-bar-pulse-strawberry-mango.png" alt="Strawberry Mango"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Strawberry Mango</div>
+        <div class="col-desc">Juicy strawberry meets tropical mango in a sweet, fruity combo.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-tropical-rainbow-blast.png')"><img src="images/geek-bar-pulse-tropical-rainbow-blast.png" alt="Tropical Rainbow Blast"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Tropical Rainbow Blast</div>
+        <div class="col-desc">A full spectrum of tropical Skittles-style fruit flavors.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-watermelon-ice.jpg')"><img src="images/geek-bar-pulse-watermelon-ice.jpg" alt="Watermelon Ice"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Watermelon Ice</div>
+        <div class="col-desc">Fresh summer watermelon with a cooling menthol exhale.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">White Gummy Ice</div>
+        <div class="col-desc">Sweet white gummy candy with a pineapple and icy twist.</div>
+      </li>
+
+      <!-- Sour Edition -->
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-sour-blue-dust.jpg')"><img src="images/geek-bar-pulse-sour-blue-dust.jpg" alt="Sour Blue Dust"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Sour Blue Dust</div>
+        <div class="col-desc">Intensely sour blue raspberry candy powder with a tangy blast.</div>
+        <span class="col-edition edition-sour">Sour</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-sour-cranapple.jpg')"><img src="images/geek-bar-pulse-sour-cranapple.jpg" alt="Sour Cranapple"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Sour Cranapple</div>
+        <div class="col-desc">Tart cranberry and crisp sour apple with a punchy finish.</div>
+        <span class="col-edition edition-sour">Sour</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-sour-gush.jpg')"><img src="images/geek-bar-pulse-sour-gush.jpg" alt="Sour Gush"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Sour Gush</div>
+        <div class="col-desc">A sharp sour rush of mixed tropical fruits.</div>
+        <span class="col-edition edition-sour">Sour</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-sour-strawberry.jpg')"><img src="images/geek-bar-pulse-sour-strawberry.jpg" alt="Sour Strawberry"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Sour Strawberry</div>
+        <div class="col-desc">Sweet strawberry candy hit with a sour, tangy punch.</div>
+        <span class="col-edition edition-sour">Sour</span>
+      </li>
+
+      <!-- Frozen Edition -->
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-frozen-cherry-apple.jpg')"><img src="images/geek-bar-pulse-frozen-cherry-apple.jpg" alt="Frozen Cherry Apple"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Frozen Cherry Apple</div>
+        <div class="col-desc">Crisp apple and sweet cherry blasted with an arctic freeze.</div>
+        <span class="col-edition edition-frozen">Frozen</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-frozen-pina-colada.jpg')"><img src="images/geek-bar-pulse-frozen-pina-colada.jpg" alt="Frozen Pina Colada"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Frozen Pina Colada</div>
+        <div class="col-desc">Tropical coconut pineapple blend chilled to icy perfection.</div>
+        <span class="col-edition edition-frozen">Frozen</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-frozen-strawberry.jpg')"><img src="images/geek-bar-pulse-frozen-strawberry.jpg" alt="Frozen Strawberry"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Frozen Strawberry</div>
+        <div class="col-desc">Ripe strawberry with a deep, intense frozen chill.</div>
+        <span class="col-edition edition-frozen">Frozen</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-frozen-watermelon.jpg')"><img src="images/geek-bar-pulse-frozen-watermelon.jpg" alt="Frozen Watermelon"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Frozen Watermelon</div>
+        <div class="col-desc">Juicy summer watermelon hit with a glacial iciness.</div>
+        <span class="col-edition edition-frozen">Frozen</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-frozen-white-grape.jpg')"><img src="images/geek-bar-pulse-frozen-white-grape.jpg" alt="Frozen White Grape"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Frozen White Grape</div>
+        <div class="col-desc">Sweet white grape with a crisp, frosty freeze.</div>
+        <span class="col-edition edition-frozen">Frozen</span>
+      </li>
+
+      <!-- Mintz Edition -->
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-blackmintz.jpg')"><img src="images/geek-bar-pulse-blackmintz.jpg" alt="Blackmintz"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Blackmintz</div>
+        <div class="col-desc">Dark, bold peppermint with a rich and cooling intensity.</div>
+        <span class="col-edition edition-mintz">Mintz</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-creamymintz.jpg')"><img src="images/geek-bar-pulse-creamymintz.jpg" alt="Creamymintz"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Creamymintz</div>
+        <div class="col-desc">Smooth, velvety mint with a soft, refreshing finish.</div>
+        <span class="col-edition edition-mintz">Mintz</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-peppermintz.jpg')"><img src="images/geek-bar-pulse-peppermintz.jpg" alt="Peppermintz"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Peppermintz</div>
+        <div class="col-desc">Sharp, classic peppermint with a clean, icy bite.</div>
+        <span class="col-edition edition-mintz">Mintz</span>
+      </li>
+
+      <!-- Savers Edition -->
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-savers-drop-sour.jpg')"><img src="images/geek-bar-pulse-savers-drop-sour.jpg" alt="Savers Drop Sour"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Savers Drop Sour</div>
+        <div class="col-desc">Candy-style sour drops with a sharp, tangy punch.</div>
+        <span class="col-edition edition-savers">Savers</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-savers-orange-mint.jpg')"><img src="images/geek-bar-pulse-savers-orange-mint.jpg" alt="Savers Orange Mint"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Savers Orange Mint</div>
+        <div class="col-desc">Bright citrus orange layered with a cool, clean mint finish.</div>
+        <span class="col-edition edition-savers">Savers</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-savers-pineapple.jpg')"><img src="images/geek-bar-pulse-savers-pineapple.jpg" alt="Savers Pineapple"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Savers Pineapple</div>
+        <div class="col-desc">Sweet, juicy tropical pineapple with a refreshing finish.</div>
+        <span class="col-edition edition-savers">Savers</span>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/geek-bar-pulse-savers-wild-berry.jpg')"><img src="images/geek-bar-pulse-savers-wild-berry.jpg" alt="Savers Wild Berry"></div>
+        <div class="col-brand">GEEK</div><div class="col-model">PULSE</div>
+        <div class="col-name">Savers Wild Berry</div>
+        <div class="col-desc">A wild mix of ripe berries, bold and slightly tart.</div>
+        <span class="col-edition edition-savers">Savers</span>
+      </li>
+
+    </ul>
+  </main>
+
+</div>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
