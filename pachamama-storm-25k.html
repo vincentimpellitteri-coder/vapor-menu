@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pachamama Storm 25K — The Vapor Place</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .back-btn {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00e5ff;
+      border: 1px solid #00e5ff;
+      border-radius: 6px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(0,229,255,0.1); }
+    h1 span { color: #00e5ff; }
+
+    .flavor-list { list-style: none; padding: 0; margin: 24px 0; }
+    .flavor-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #222;
+      transition: background 0.15s;
+    }
+    .flavor-row:hover { background: #1a1a1a; }
+    .thumb-wrap { flex-shrink: 0; cursor: pointer; }
+    .thumb-wrap img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      display: block;
+      transition: border-color 0.2s;
+    }
+    .thumb-wrap:hover img { border-color: #00e5ff; }
+    .no-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 6px;
+      background: #1a1a1a;
+      border: 1px dashed #333;
+      flex-shrink: 0;
+    }
+    .col-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #10b981;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 60px;
+    }
+    .col-model {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #555;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 60px;
+    }
+    .col-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      flex-shrink: 0;
+      min-width: 200px;
+    }
+    .col-desc { font-size: 0.82rem; color: #888; }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,229,255,0.15);
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+  </style>
+</head>
+<body id="inner-page">
+<div style="position:relative;z-index:1;">
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="The Vapor Place" class="logo-img">
+      </a>
+      <span class="badge-21">21+</span>
+    </div>
+    <nav>
+      <a href="ejuicefinder.html">E-Juice Finder</a>
+      <a href="menu3.html">Sub Ohm &amp; Salt</a>
+      <a href="https://tvp.aglots.com" target="_blank">Full Store</a>
+    </nav>
+  </header>
+
+  <main>
+    <div style="display:flex;align-items:center;margin-top:8px;margin-bottom:6px;">
+      <a href="pachamama.html" class="back-btn">&larr; Back to Pachamama</a>
+      <h1 style="flex:1;text-align:center;margin:0;">PACHAMAMA <span>STORM 25K</span></h1>
+    </div>
+    <p style="color:#888;margin-bottom:12px;text-align:center;">25,000 Puffs &nbsp;&middot;&nbsp; 5% Nicotine &nbsp;&middot;&nbsp; 18 Flavors</p>
+
+    <ul class="flavor-list">
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-blue-razz-ice.jpg')"><img src="images/pachamama-storm-blue-razz-ice.jpg" alt="Blue Razz Ice"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Blue Razz Ice</div>
+        <div class="col-desc">Sweet blue raspberry with a sharp, icy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-blueberry-burst.jpg')"><img src="images/pachamama-storm-blueberry-burst.jpg" alt="Blueberry Burst"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Blueberry Burst</div>
+        <div class="col-desc">Juicy ripe blueberry with a bold, sweet burst.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-clear.jpg')"><img src="images/pachamama-storm-clear.jpg" alt="Clear"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Clear</div>
+        <div class="col-desc">Unflavored, clean, smooth vapor with no taste.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-fn-apple.jpg')"><img src="images/pachamama-storm-fn-apple.jpg" alt="F'N Apple"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">F'N Apple</div>
+        <div class="col-desc">Crisp, bold apple with a bright, tangy sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Florida Orange</div>
+        <div class="col-desc">Bright, fresh-squeezed Florida orange, citrusy and sweet.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-grape-ice.jpg')"><img src="images/pachamama-storm-grape-ice.jpg" alt="Grape Ice"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Grape Ice</div>
+        <div class="col-desc">Sweet, rich grape with a crisp, cooling icy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Iced Blue Dragon Fruit</div>
+        <div class="col-desc">Exotic blue dragon fruit with a bright, icy chill.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-juicy-mango.jpg')"><img src="images/pachamama-storm-juicy-mango.jpg" alt="Juicy Mango"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Juicy Mango</div>
+        <div class="col-desc">Ripe, tropical mango bursting with juicy sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-mint-mojito.jpg')"><img src="images/pachamama-storm-mint-mojito.jpg" alt="Mint Mojito"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Mint Mojito</div>
+        <div class="col-desc">Refreshing spearmint with lime and a hint of cocktail sweetness.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-mystic-ice.jpg')"><img src="images/pachamama-storm-mystic-ice.jpg" alt="Mystic Ice"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Mystic Ice</div>
+        <div class="col-desc">A mysterious blend of cool fruits with a deep icy exhale.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-orange-passion-ice.jpg')"><img src="images/pachamama-storm-orange-passion-ice.jpg" alt="Orange Passion Ice"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Orange Passion Ice</div>
+        <div class="col-desc">Tangy orange and passion fruit with a cooling icy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-peach-berry.jpg')"><img src="images/pachamama-storm-peach-berry.jpg" alt="Peach Berry"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Peach Berry</div>
+        <div class="col-desc">Sweet ripe peach with a medley of fresh, juicy berries.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-sour-apple-ice.jpg')"><img src="images/pachamama-storm-sour-apple-ice.jpg" alt="Sour Apple Ice"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Sour Apple Ice</div>
+        <div class="col-desc">Tart green apple with a sour pucker and icy cool finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-strawberry-cherry.jpg')"><img src="images/pachamama-storm-strawberry-cherry.jpg" alt="Strawberry Cherry"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Strawberry Cherry</div>
+        <div class="col-desc">Sweet strawberry and ripe cherry in a bold, fruity blend.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-strawberry-kiwi.jpg')"><img src="images/pachamama-storm-strawberry-kiwi.jpg" alt="Strawberry Kiwi"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Strawberry Kiwi</div>
+        <div class="col-desc">Classic sweet strawberry paired with tangy, tropical kiwi.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="no-img"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Strawberry Watermelon</div>
+        <div class="col-desc">Ripe strawberry and juicy watermelon in a sweet summer mix.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-strazz.jpg')"><img src="images/pachamama-storm-strazz.jpg" alt="Strazz"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Strazz</div>
+        <div class="col-desc">Strawberry and razz — a bold berry mashup with a punchy finish.</div>
+      </li>
+
+      <li class="flavor-row">
+        <div class="thumb-wrap" onclick="openLightbox('images/pachamama-storm-watermelon-ice.jpg')"><img src="images/pachamama-storm-watermelon-ice.jpg" alt="Watermelon Ice"></div>
+        <div class="col-brand">PACHA</div><div class="col-model">STORM</div>
+        <div class="col-name">Watermelon Ice</div>
+        <div class="col-desc">Fresh summer watermelon with a crisp, icy kick.</div>
+      </li>
+
+    </ul>
+  </main>
+
+</div>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
