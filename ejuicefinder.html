@@ -1665,8 +1665,7 @@ function renderBrandGrid() {
     <img class="brand-card-logo" src="images/raz-logo.png" alt="RAZ">
   </div>` : '';
   const gbCard = gbSeen ? `<div class="brand-card" data-link="geek-bar.html">
-    <div class="brand-card-name">Geek Bar</div>
-    <div class="brand-card-count">Pulse &amp; Pulse X &mdash; 63 flavors</div>
+    <img class="brand-card-logo" src="images/geek-bar-logo.jpg" alt="Geek Bar">
   </div>` : '';
   grid.innerHTML = razCard + gbCard + brands.map(([brand, count]) =>
     `<div class="brand-card" data-brand="${esc(brand)}">
