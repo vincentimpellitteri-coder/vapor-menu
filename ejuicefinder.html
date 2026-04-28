@@ -1869,8 +1869,7 @@ function renderBrandGrid() {
     <div class="brand-card-count">Disposables</div>
   </div>` : '';
   const sevenDazeCard = sevenDazeSeen ? `<div class="brand-card" data-link="7daze.html">
-    <div class="brand-card-name" style="font-size:1.3rem;letter-spacing:0.06em;color:#22c55e;">7 DAZE</div>
-    <div class="brand-card-count">Salt Nic &amp; Sub Ohm</div>
+    <img class="brand-card-logo" src="images/7daze-logo.png" alt="7 Daze" style="filter:none;opacity:1;">
   </div>` : '';
   grid.innerHTML = razCard + gbCard + lmCard + pachaCard + fiftyCard + oxbarCard + sevenDazeCard + brands.map(([brand, count]) =>
     `<div class="brand-card" data-brand="${esc(brand)}">
