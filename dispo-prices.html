@@ -33,42 +33,47 @@
     }
     .legend span { display: flex; align-items: center; gap: 6px; }
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    .dot-gray  { background: #444; }
-    .dot-green { background: #22c55e; }
-    .dot-cyan  { background: #00e5ff; }
+    .dot-gray  { background: #9ca3af; }
+    .dot-green { background: #15803d; }
+    .dot-cyan  { background: #0369a1; }
 
     .compare-wrap { overflow-x: auto; }
     table.compare {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.88rem;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
     table.compare th {
       text-align: left;
       padding: 10px 12px;
-      border-bottom: 2px solid #333;
+      border-bottom: 2px solid #e5e7eb;
       font-family: 'Orbitron', sans-serif;
       font-size: 0.58rem;
       letter-spacing: 0.1em;
-      color: #555;
+      color: #9ca3af;
       text-transform: uppercase;
       white-space: nowrap;
       cursor: pointer;
       user-select: none;
       transition: color 0.15s;
+      background: #fff;
     }
-    table.compare th:hover { color: #aaa; }
-    table.compare th.sorted { color: #00e5ff; }
+    table.compare th:hover { color: #374151; }
+    table.compare th.sorted { color: #0284c7; }
     table.compare th.right { text-align: right; }
-    .sort-arrow { margin-left: 4px; opacity: 0.6; font-size: 0.65rem; }
+    .sort-arrow { margin-left: 4px; opacity: 0.7; font-size: 0.65rem; }
 
     table.compare td {
       padding: 11px 12px;
-      border-bottom: 1px solid #1e1e1e;
+      border-bottom: 1px solid #f3f4f6;
       vertical-align: middle;
-      background: #0a0a0a;
+      background: #fff;
     }
-    table.compare tr:hover td { background: #181818; }
+    table.compare tr:hover td { background: #f0f4ff; }
 
     .brand-badge {
       display: inline-block;
@@ -82,34 +87,34 @@
       white-space: nowrap;
       text-decoration: none;
     }
-    .brand-raz   { color: #00e5ff; border: 1px solid #00e5ff33; background: #00e5ff0d; }
-    .brand-gb    { color: #22c55e; border: 1px solid #22c55e33; background: #22c55e0d; }
-    .brand-lm    { color: #f472b6; border: 1px solid #f472b633; background: #f472b60d; }
-    .brand-pacha { color: #10b981; border: 1px solid #10b98133; background: #10b9810d; }
-    .brand-fifty { color: #f97316; border: 1px solid #f9731633; background: #f973160d; }
-    .brand-oxbar { color: #a78bfa; border: 1px solid #a78bfa33; background: #a78bfa0d; }
+    .brand-raz   { color: #0369a1; border: 1px solid #bae6fd; background: #e0f2fe; }
+    .brand-gb    { color: #15803d; border: 1px solid #bbf7d0; background: #dcfce7; }
+    .brand-lm    { color: #be185d; border: 1px solid #fbcfe8; background: #fce7f3; }
+    .brand-pacha { color: #047857; border: 1px solid #a7f3d0; background: #d1fae5; }
+    .brand-fifty { color: #c2410c; border: 1px solid #fed7aa; background: #ffedd5; }
+    .brand-oxbar { color: #6d28d9; border: 1px solid #ddd6fe; background: #ede9fe; }
 
-    .td-device { color: #fff; font-weight: 700; }
-    .td-puffs  { color: #fff; white-space: nowrap; font-weight: 600; }
-    .td-ml     { color: #bbb; white-space: nowrap; }
+    .td-device { color: #111827; font-weight: 700; }
+    .td-puffs  { color: #111827; white-space: nowrap; font-weight: 600; }
+    .td-ml     { color: #6b7280; white-space: nowrap; }
     .td-price {
       text-align: right;
       font-family: 'Orbitron', sans-serif;
       font-size: 0.85rem;
       font-weight: 700;
-      color: #22c55e;
+      color: #15803d;
       white-space: nowrap;
     }
-    .td-price.na { color: #444; font-family: inherit; font-size: 0.88rem; font-weight: 400; }
+    .td-price.na { color: #d1d5db; font-family: inherit; font-size: 0.88rem; font-weight: 400; }
     .td-val {
       text-align: right;
       font-size: 0.8rem;
-      color: #444;
+      color: #9ca3af;
       white-space: nowrap;
     }
-    .td-val.good  { color: #22c55e; }
-    .td-val.great { color: #00e5ff; font-weight: 700; }
-    .td-val.na    { color: #333; }
+    .td-val.good  { color: #15803d; font-weight: 600; }
+    .td-val.great { color: #0369a1; font-weight: 700; }
+    .td-val.na    { color: #d1d5db; }
   </style>
 </head>
 <body id="inner-page">
