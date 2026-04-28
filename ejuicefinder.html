@@ -1825,24 +1825,27 @@ function renderBrandGrid() {
   const PACHA_DISP = new Set(['Pachamama Storm 25K']);
   const FIFTY_DISP = new Set(['Fruitia x Fifty Bar 20K','Fifty Bar V2 20K']);
   const OXBAR_DISP = new Set(['OXBAR Astro Maze 50K']);
+  const SEVEN_DAZE_DISP = new Set(['7 Daze', 'Fusion', 'Reds Apple']);
   let razDispSeen = false;
   let gbSeen = false;
   let lmSeen = false;
   let pachaSeen = false;
   let fiftySeen = false;
   let oxbarSeen = false;
+  let sevenDazeSeen = false;
   products.forEach(p => {
-    if (RAZ_DISP.has(p.brand))   { razDispSeen = true; return; }
-    if (GB_DISP.has(p.brand))    { gbSeen = true; return; }
-    if (LM_DISP.has(p.brand))    { lmSeen = true; return; }
-    if (PACHA_DISP.has(p.brand)) { pachaSeen = true; return; }
-    if (FIFTY_DISP.has(p.brand)) { fiftySeen = true; return; }
-    if (OXBAR_DISP.has(p.brand)) { oxbarSeen = true; return; }
+    if (RAZ_DISP.has(p.brand))        { razDispSeen = true; return; }
+    if (GB_DISP.has(p.brand))         { gbSeen = true; return; }
+    if (LM_DISP.has(p.brand))         { lmSeen = true; return; }
+    if (PACHA_DISP.has(p.brand))      { pachaSeen = true; return; }
+    if (FIFTY_DISP.has(p.brand))      { fiftySeen = true; return; }
+    if (OXBAR_DISP.has(p.brand))      { oxbarSeen = true; return; }
+    if (SEVEN_DAZE_DISP.has(p.brand)) { sevenDazeSeen = true; return; }
     brandMap[p.brand] = (brandMap[p.brand] || 0) + 1;
   });
   const brands = Object.entries(brandMap).sort((a,b) => a[0].localeCompare(b[0]));
   const grid = document.getElementById('brand-grid');
-  if (!brands.length && !razDispSeen && !gbSeen && !lmSeen && !pachaSeen && !fiftySeen && !oxbarSeen) {
+  if (!brands.length && !razDispSeen && !gbSeen && !lmSeen && !pachaSeen && !fiftySeen && !oxbarSeen && !sevenDazeSeen) {
     grid.innerHTML = emptyState('🏷', 'No brands yet.');
     return;
   }
@@ -1865,7 +1868,11 @@ function renderBrandGrid() {
     <div class="brand-card-name" style="font-size:1.4rem;letter-spacing:0.08em;color:#a78bfa;">OXBAR</div>
     <div class="brand-card-count">Disposables</div>
   </div>` : '';
-  grid.innerHTML = razCard + gbCard + lmCard + pachaCard + fiftyCard + oxbarCard + brands.map(([brand, count]) =>
+  const sevenDazeCard = sevenDazeSeen ? `<div class="brand-card" data-link="7daze.html">
+    <div class="brand-card-name" style="font-size:1.3rem;letter-spacing:0.06em;color:#22c55e;">7 DAZE</div>
+    <div class="brand-card-count">Salt Nic &amp; Sub Ohm</div>
+  </div>` : '';
+  grid.innerHTML = razCard + gbCard + lmCard + pachaCard + fiftyCard + oxbarCard + sevenDazeCard + brands.map(([brand, count]) =>
     `<div class="brand-card" data-brand="${esc(brand)}">
       <div class="brand-card-name">${esc(brand)}</div>
       <div class="brand-card-count">${count} product${count !== 1 ? 's' : ''}</div>
