@@ -19,8 +19,23 @@
       text-align: center;
       color: #555;
       font-size: 0.8rem;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
+
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 0 20px;
+      font-size: 0.75rem;
+      color: #555;
+    }
+    .legend span { display: flex; align-items: center; gap: 6px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot-gray  { background: #444; }
+    .dot-green { background: #22c55e; }
+    .dot-cyan  { background: #00e5ff; }
 
     .compare-wrap { overflow-x: auto; }
     table.compare {
@@ -35,11 +50,18 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 0.58rem;
       letter-spacing: 0.1em;
-      color: #444;
+      color: #555;
       text-transform: uppercase;
       white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.15s;
     }
+    table.compare th:hover { color: #aaa; }
+    table.compare th.sorted { color: #00e5ff; }
     table.compare th.right { text-align: right; }
+    .sort-arrow { margin-left: 4px; opacity: 0.6; font-size: 0.65rem; }
+
     table.compare td {
       padding: 11px 12px;
       border-bottom: 1px solid #1e1e1e;
@@ -57,17 +79,18 @@
       padding: 3px 7px;
       border-radius: 4px;
       white-space: nowrap;
+      text-decoration: none;
     }
-    .brand-raz    { color: #00e5ff; border: 1px solid #00e5ff22; background: #00e5ff0d; }
-    .brand-gb     { color: #22c55e; border: 1px solid #22c55e22; background: #22c55e0d; }
-    .brand-lm     { color: #f472b6; border: 1px solid #f472b622; background: #f472b60d; }
-    .brand-pacha  { color: #10b981; border: 1px solid #10b98122; background: #10b9810d; }
-    .brand-fifty  { color: #f97316; border: 1px solid #f9731622; background: #f973160d; }
-    .brand-oxbar  { color: #a78bfa; border: 1px solid #a78bfa22; background: #a78bfa0d; }
+    .brand-raz   { color: #00e5ff; border: 1px solid #00e5ff33; background: #00e5ff0d; }
+    .brand-gb    { color: #22c55e; border: 1px solid #22c55e33; background: #22c55e0d; }
+    .brand-lm    { color: #f472b6; border: 1px solid #f472b633; background: #f472b60d; }
+    .brand-pacha { color: #10b981; border: 1px solid #10b98133; background: #10b9810d; }
+    .brand-fifty { color: #f97316; border: 1px solid #f9731633; background: #f973160d; }
+    .brand-oxbar { color: #a78bfa; border: 1px solid #a78bfa33; background: #a78bfa0d; }
 
-    .device-name { color: #e0e0e0; font-weight: 600; }
-    .td-puffs { color: #ccc; white-space: nowrap; }
-    .td-ml { color: #888; white-space: nowrap; }
+    .td-device { color: #f0f0f0; font-weight: 600; }
+    .td-puffs  { color: #e0e0e0; white-space: nowrap; }
+    .td-ml     { color: #bbb; white-space: nowrap; }
     .td-price {
       text-align: right;
       font-family: 'Orbitron', sans-serif;
@@ -76,39 +99,16 @@
       color: #22c55e;
       white-space: nowrap;
     }
-    .td-value {
+    .td-price.na { color: #444; font-family: inherit; font-size: 0.88rem; font-weight: 400; }
+    .td-val {
       text-align: right;
-      font-size: 0.78rem;
-      color: #555;
+      font-size: 0.8rem;
+      color: #444;
       white-space: nowrap;
     }
-    .td-value.good  { color: #22c55e; }
-    .td-value.great { color: #00e5ff; font-weight: 700; }
-
-    .section-head td {
-      padding: 18px 12px 6px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.12em;
-      color: #333;
-      text-transform: uppercase;
-      border-bottom: 1px solid #1a1a1a;
-    }
-
-    .legend {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 24px 0 8px;
-      font-size: 0.75rem;
-      color: #555;
-    }
-    .legend span { display: flex; align-items: center; gap: 6px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    .dot-gray  { background: #555; }
-    .dot-green { background: #22c55e; }
-    .dot-cyan  { background: #00e5ff; }
+    .td-val.good  { color: #22c55e; }
+    .td-val.great { color: #00e5ff; font-weight: 700; }
+    .td-val.na    { color: #333; }
   </style>
 </head>
 <body id="inner-page">
@@ -130,169 +130,122 @@
 
   <main>
     <div class="page-title">Disposable Vape Comparison</div>
-    <p class="page-sub">All devices ranked by puff count &nbsp;&middot;&nbsp; Prices from our store</p>
+    <p class="page-sub">Click any column to sort &nbsp;&middot;&nbsp; Prices from our store</p>
 
     <div class="legend">
-      <span><span class="dot dot-gray"></span> Standard value</span>
+      <span><span class="dot dot-gray"></span> Standard</span>
       <span><span class="dot dot-green"></span> Good value</span>
       <span><span class="dot dot-cyan"></span> Best value</span>
     </div>
 
     <div class="compare-wrap">
-      <table class="compare">
+      <table class="compare" id="compare-table">
         <thead>
           <tr>
-            <th>Brand</th>
-            <th>Device</th>
-            <th>Puffs</th>
-            <th>mL</th>
-            <th class="right">Price</th>
-            <th class="right">Puffs / $</th>
+            <th data-col="brand">Brand <span class="sort-arrow"></span></th>
+            <th data-col="device">Device <span class="sort-arrow"></span></th>
+            <th data-col="puffs">Puffs <span class="sort-arrow"></span></th>
+            <th data-col="ml">mL <span class="sort-arrow"></span></th>
+            <th data-col="price" class="right">Price <span class="sort-arrow"></span></th>
+            <th data-col="puffsPerDollar" class="right">Puffs / $ <span class="sort-arrow"></span></th>
+            <th data-col="mlPerDollar" class="right">mL / $ <span class="sort-arrow"></span></th>
           </tr>
         </thead>
-        <tbody>
-
-          <!-- ~9K -->
-          <tr>
-            <td><a href="raz.html" class="brand-badge brand-raz">RAZ</a></td>
-            <td class="device-name">TN9000</td>
-            <td class="td-puffs">9,000</td>
-            <td class="td-ml">12mL</td>
-            <td class="td-price">$23.99</td>
-            <td class="td-value">375</td>
-          </tr>
-
-          <!-- ~15K -->
-          <tr>
-            <td><a href="geek-bar.html" class="brand-badge brand-gb">Geek Bar</a></td>
-            <td class="device-name">Pulse</td>
-            <td class="td-puffs">15,000</td>
-            <td class="td-ml">16mL</td>
-            <td class="td-price">$27.99</td>
-            <td class="td-value">536</td>
-          </tr>
-          <tr>
-            <td><a href="lost-mary.html" class="brand-badge brand-lm">Lost Mary</a></td>
-            <td class="device-name">MT15000 Turbo</td>
-            <td class="td-puffs">15,000</td>
-            <td class="td-ml">16mL</td>
-            <td class="td-price">$27.99</td>
-            <td class="td-value">536</td>
-          </tr>
-
-          <!-- ~20K -->
-          <tr>
-            <td><a href="fifty-bar.html" class="brand-badge brand-fifty">Fifty Bar</a></td>
-            <td class="device-name">Fruitia x Fifty Bar 20K</td>
-            <td class="td-puffs">20,000</td>
-            <td class="td-ml">16mL</td>
-            <td class="td-price">$28.99</td>
-            <td class="td-value good">690</td>
-          </tr>
-          <tr>
-            <td><a href="fifty-bar.html" class="brand-badge brand-fifty">Fifty Bar</a></td>
-            <td class="device-name">V2 20K</td>
-            <td class="td-puffs">20,000</td>
-            <td class="td-ml">16mL</td>
-            <td class="td-price">$28.99</td>
-            <td class="td-value good">690</td>
-          </tr>
-          <tr>
-            <td><a href="lost-mary.html" class="brand-badge brand-lm">Lost Mary</a></td>
-            <td class="device-name">MO20000 Pro</td>
-            <td class="td-puffs">20,000</td>
-            <td class="td-ml">18mL</td>
-            <td class="td-price">$29.99</td>
-            <td class="td-value good">667</td>
-          </tr>
-
-          <!-- ~25K -->
-          <tr>
-            <td><a href="pachamama.html" class="brand-badge brand-pacha">Pachamama</a></td>
-            <td class="device-name">Storm 25K</td>
-            <td class="td-puffs">25,000</td>
-            <td class="td-ml">20mL</td>
-            <td class="td-price">$25.99</td>
-            <td class="td-value great">962</td>
-          </tr>
-          <tr>
-            <td><a href="raz.html" class="brand-badge brand-raz">RAZ</a></td>
-            <td class="device-name">LTX25000</td>
-            <td class="td-puffs">25,000</td>
-            <td class="td-ml">16mL</td>
-            <td class="td-price">$31.99</td>
-            <td class="td-value good">782</td>
-          </tr>
-          <tr>
-            <td><a href="geek-bar.html" class="brand-badge brand-gb">Geek Bar</a></td>
-            <td class="device-name">Pulse X</td>
-            <td class="td-puffs">25,000</td>
-            <td class="td-ml">18mL</td>
-            <td class="td-price">$31.99</td>
-            <td class="td-value good">782</td>
-          </tr>
-
-          <!-- ~35K -->
-          <tr>
-            <td><a href="raz.html" class="brand-badge brand-raz">RAZ</a></td>
-            <td class="device-name">RYL 35K</td>
-            <td class="td-puffs">35,000</td>
-            <td class="td-ml">16.5mL</td>
-            <td class="td-price">$29.99</td>
-            <td class="td-value great">1,167</td>
-          </tr>
-          <tr>
-            <td><a href="lost-mary.html" class="brand-badge brand-lm">Lost Mary</a></td>
-            <td class="device-name">MT35K Turbo</td>
-            <td class="td-puffs">35,000</td>
-            <td class="td-ml">18mL</td>
-            <td class="td-price">$31.99</td>
-            <td class="td-value great">1,094</td>
-          </tr>
-          <tr>
-            <td><a href="lost-mary.html" class="brand-badge brand-lm">Lost Mary</a></td>
-            <td class="device-name">X-Cube Crystal</td>
-            <td class="td-puffs">35,000</td>
-            <td class="td-ml">18mL</td>
-            <td class="td-price" style="color:#555;">—</td>
-            <td class="td-value">—</td>
-          </tr>
-
-          <!-- ~50K -->
-          <tr>
-            <td><a href="raz.html" class="brand-badge brand-raz">RAZ</a></td>
-            <td class="device-name">VUE 50K <span style="font-size:0.7rem;color:#555;font-weight:400;">(Kit)</span></td>
-            <td class="td-puffs">50,000</td>
-            <td class="td-ml">13mL</td>
-            <td class="td-price">$29.99</td>
-            <td class="td-value great">1,668</td>
-          </tr>
-          <tr>
-            <td><a href="raz.html" class="brand-badge brand-raz">RAZ</a></td>
-            <td class="device-name">RX 50K</td>
-            <td class="td-puffs">50,000</td>
-            <td class="td-ml">19mL</td>
-            <td class="td-price">$31.99</td>
-            <td class="td-value great">1,563</td>
-          </tr>
-          <tr>
-            <td><a href="oxbar.html" class="brand-badge brand-oxbar">OXBAR</a></td>
-            <td class="device-name">Astro Maze 50K <span style="font-size:0.7rem;color:#555;font-weight:400;">(ECO)</span></td>
-            <td class="td-puffs">50,000</td>
-            <td class="td-ml">20mL</td>
-            <td class="td-price">$26.99</td>
-            <td class="td-value great">1,852</td>
-          </tr>
-
-        </tbody>
+        <tbody id="compare-body"></tbody>
       </table>
     </div>
 
-    <p style="color:#333;font-size:0.72rem;text-align:center;margin-top:20px;">
+    <p style="color:#2a2a2a;font-size:0.72rem;text-align:center;margin-top:20px;">
       Puff counts are manufacturer estimates. Actual puffs vary by usage. Prices may vary by location.
     </p>
   </main>
 
 </div>
+
+<script>
+const DEVICES = [
+  { brand:'RAZ',      brandClass:'brand-raz',   brandLink:'raz.html',        device:'TN9000',                 puffs:9000,  ml:12,   price:23.99 },
+  { brand:'Geek Bar', brandClass:'brand-gb',    brandLink:'geek-bar.html',   device:'Pulse',                  puffs:15000, ml:16,   price:27.99 },
+  { brand:'Lost Mary',brandClass:'brand-lm',    brandLink:'lost-mary.html',  device:'MT15000 Turbo',          puffs:15000, ml:16,   price:27.99 },
+  { brand:'Fifty Bar',brandClass:'brand-fifty', brandLink:'fifty-bar.html',  device:'Fruitia x Fifty Bar 20K',puffs:20000, ml:16,   price:28.99 },
+  { brand:'Fifty Bar',brandClass:'brand-fifty', brandLink:'fifty-bar.html',  device:'V2 20K',                 puffs:20000, ml:16,   price:28.99 },
+  { brand:'Lost Mary',brandClass:'brand-lm',    brandLink:'lost-mary.html',  device:'MO20000 Pro',            puffs:20000, ml:18,   price:29.99 },
+  { brand:'Pachamama',brandClass:'brand-pacha', brandLink:'pachamama.html',  device:'Storm 25K',              puffs:25000, ml:20,   price:25.99 },
+  { brand:'RAZ',      brandClass:'brand-raz',   brandLink:'raz.html',        device:'LTX25000',               puffs:25000, ml:16,   price:31.99 },
+  { brand:'Geek Bar', brandClass:'brand-gb',    brandLink:'geek-bar.html',   device:'Pulse X',                puffs:25000, ml:18,   price:31.99 },
+  { brand:'RAZ',      brandClass:'brand-raz',   brandLink:'raz.html',        device:'RYL 35K',                puffs:35000, ml:16.5, price:29.99 },
+  { brand:'Lost Mary',brandClass:'brand-lm',    brandLink:'lost-mary.html',  device:'MT35K Turbo',            puffs:35000, ml:18,   price:31.99 },
+  { brand:'Lost Mary',brandClass:'brand-lm',    brandLink:'lost-mary.html',  device:'X-Cube Crystal',         puffs:35000, ml:18,   price:null  },
+  { brand:'RAZ',      brandClass:'brand-raz',   brandLink:'raz.html',        device:'VUE 50K (Kit)',          puffs:50000, ml:13,   price:29.99 },
+  { brand:'RAZ',      brandClass:'brand-raz',   brandLink:'raz.html',        device:'RX 50K',                 puffs:50000, ml:19,   price:31.99 },
+  { brand:'OXBAR',    brandClass:'brand-oxbar', brandLink:'oxbar.html',      device:'Astro Maze 50K (ECO)',   puffs:50000, ml:20,   price:26.99 },
+];
+
+function valueClass(val, threshGood, threshGreat) {
+  if (val === null) return 'na';
+  if (val >= threshGreat) return 'great';
+  if (val >= threshGood)  return 'good';
+  return '';
+}
+
+function fmt(n, decimals) {
+  if (n === null) return '—';
+  return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
+
+let sortCol = 'puffs';
+let sortAsc = true;
+
+function render() {
+  const sorted = [...DEVICES].sort((a, b) => {
+    let av = a[sortCol], bv = b[sortCol];
+    if (av === null) av = sortAsc ? Infinity : -Infinity;
+    if (bv === null) bv = sortAsc ? Infinity : -Infinity;
+    if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+    return sortAsc ? av - bv : bv - av;
+  });
+
+  document.getElementById('compare-body').innerHTML = sorted.map(r => {
+    const ppd = r.price ? r.puffs / r.price : null;
+    const mpd = r.price ? r.ml / r.price : null;
+    const ppdClass = valueClass(ppd, 500, 1000);
+    const mpdClass = valueClass(mpd, 0.55, 0.70);
+    return `<tr>
+      <td><a href="${r.brandLink}" class="brand-badge ${r.brandClass}">${r.brand}</a></td>
+      <td class="td-device">${r.device}</td>
+      <td class="td-puffs">${r.puffs.toLocaleString()}</td>
+      <td class="td-ml">${r.ml}mL</td>
+      <td class="td-price${r.price ? '' : ' na'}">${r.price ? '$' + r.price.toFixed(2) : '—'}</td>
+      <td class="td-val ${ppdClass}">${ppd ? Math.round(ppd).toLocaleString() : '—'}</td>
+      <td class="td-val ${mpdClass}">${mpd ? fmt(mpd, 2) : '—'}</td>
+    </tr>`;
+  }).join('');
+
+  // update header arrows
+  document.querySelectorAll('#compare-table th[data-col]').forEach(th => {
+    const col = th.dataset.col;
+    const arrow = th.querySelector('.sort-arrow');
+    th.classList.toggle('sorted', col === sortCol);
+    arrow.textContent = col === sortCol ? (sortAsc ? ' ▲' : ' ▼') : '';
+  });
+}
+
+document.querySelectorAll('#compare-table th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (sortCol === col) sortAsc = !sortAsc;
+    else { sortCol = col; sortAsc = true; }
+    render();
+  });
+});
+
+// computed cols need to be derived from base data
+DEVICES.forEach(r => {
+  r.puffsPerDollar = r.price ? r.puffs / r.price : null;
+  r.mlPerDollar    = r.price ? r.ml / r.price : null;
+});
+
+render();
+</script>
 </body>
 </html>
