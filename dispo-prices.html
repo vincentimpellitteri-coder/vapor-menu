@@ -149,6 +149,7 @@
             <th data-col="price" class="right">Price <span class="sort-arrow"></span></th>
             <th data-col="puffsPerDollar" class="right">Puffs / $ <span class="sort-arrow"></span></th>
             <th data-col="mlPerDollar" class="right">mL / $ <span class="sort-arrow"></span></th>
+            <th data-col="dollarPerMl" class="right">$ / mL <span class="sort-arrow"></span></th>
           </tr>
         </thead>
         <tbody id="compare-body"></tbody>
@@ -209,8 +210,10 @@ function render() {
   document.getElementById('compare-body').innerHTML = sorted.map(r => {
     const ppd = r.price ? r.puffs / r.price : null;
     const mpd = r.price ? r.ml / r.price : null;
+    const dpm = r.price ? r.price / r.ml : null;
     const ppdClass = valueClass(ppd, 500, 1000);
     const mpdClass = valueClass(mpd, 0.55, 0.70);
+    const dpmClass = dpm === null ? 'na' : dpm <= 1.50 ? 'great' : dpm <= 1.85 ? 'good' : '';
     return `<tr>
       <td><a href="${r.brandLink}" class="brand-badge ${r.brandClass}">${r.brand}</a></td>
       <td class="td-device">${r.device}</td>
@@ -219,6 +222,7 @@ function render() {
       <td class="td-price${r.price ? '' : ' na'}">${r.price ? '$' + r.price.toFixed(2) : '—'}</td>
       <td class="td-val ${ppdClass}">${ppd ? Math.round(ppd).toLocaleString() : '—'}</td>
       <td class="td-val ${mpdClass}">${mpd ? fmt(mpd, 2) : '—'}</td>
+      <td class="td-val ${dpmClass}">${dpm ? '$' + fmt(dpm, 2) : '—'}</td>
     </tr>`;
   }).join('');
 
@@ -244,6 +248,7 @@ document.querySelectorAll('#compare-table th[data-col]').forEach(th => {
 DEVICES.forEach(r => {
   r.puffsPerDollar = r.price ? r.puffs / r.price : null;
   r.mlPerDollar    = r.price ? r.ml / r.price : null;
+  r.dollarPerMl    = r.price ? r.price / r.ml : null;
 });
 
 render();
