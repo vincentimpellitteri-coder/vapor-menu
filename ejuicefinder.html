@@ -1308,6 +1308,7 @@ function seedIfEmpty() {
     {"id":"aafece47-592e-4e12-9184-6550388b2e49","name":"Vanilla Tobacco Granola Bar","brand":"Yogi","category":"Tobacco","flavorNotes":"Vanilla, Cream, Honey, Granola","type":"SALT+SUB","size":"Salt 30ml / Sub 60ml","nicotine":"Salt: 30mg / 50mg · Sub: 0mg / 3mg / 6mg","vgpg":"","price":0,"isDeal":false,"dealNote":"","isTop10":false,"image":"yogi-vanilla-tobacco-granola-bar.jpg","notes":""},
     {"id":"dc3e8353-de8b-48a0-9128-09c3a19c9fc0","name":"Unflavored","brand":"Air Factory","category":"Fruit","flavorNotes":"Unflavored, Flavorless","type":"SUB","size":"100ml","nicotine":"0mg / 3mg / 6mg","vgpg":"","price":0,"isDeal":false,"dealNote":"","isTop10":false,"image":"air-factory-unflavored.jpg","notes":""},
     {"id":"b0cbef17-14f9-494f-a375-453480bbaf0f","name":"Excision Virus","brand":"Alt Zero","category":"Fruit","flavorNotes":"Alt Zero, Lemon, Lime, Citrus, Mtn Dew, Mountain Dew","type":"SALT+SUB","size":"Salt 30ml / Sub 60ml","nicotine":"Salt: 20mg / 40mg · Sub: 0mg / 3mg / 6mg","vgpg":"","price":0,"isDeal":false,"dealNote":"","isTop10":false,"image":"alt-zero-excision-virus-the-electrifying-original-lemon-lime-citrus-dew.png","notes":""},
+    {"id":"az-antidote-001","name":"Excision Antidote","brand":"Alt Zero","category":"Fruit","flavorNotes":"Alt Zero, Lemon, Lime, Citrus, Ice, Iced, Frozen, Mtn Dew, Mountain Dew","type":"SALT+SUB","size":"Salt 30ml / Sub 60ml","nicotine":"Salt: 20mg / 40mg · Sub: 0mg / 3mg / 6mg","vgpg":"","price":0,"isDeal":false,"dealNote":"","isTop10":false,"image":"excision-antidote.jpg","notes":""},
     {"id":"e3145a40-77cc-488d-8f0e-2f375df89374","name":"Excision X Rated","brand":"Alt Zero","category":"Dessert","flavorNotes":"Alt Zero, Blueberry, Raspberry, Blackberry, Yogurt, Vanilla, Cream","type":"SUB","size":"60ml","nicotine":"0mg / 3mg / 6mg","vgpg":"","price":0,"isDeal":false,"dealNote":"","isTop10":false,"image":"alt-zero-excision-x-rated-sweet-blueberry-tart-yogurt.png","notes":""},
     {"id":"65895b9c-4205-4783-9085-b0c89d371356","name":"Dont Care Bear","brand":"Bad Drip","category":"Candy","flavorNotes":"Bad Drip, Peach, Pear, Gummy","type":"SUB","size":"100ml","nicotine":"0mg / 3mg / 6mg","vgpg":"","price":0,"isDeal":false,"dealNote":"","isTop10":false,"image":"bad-drip-logo.png","notes":""},
     {"id":"50faf6b3-78f3-4c64-a00d-a801adeab405","name":"Drooly","brand":"Bad Drip","category":"Fruit","flavorNotes":"Bad Drip, Grape","type":"SUB","size":"100ml","nicotine":"0mg / 3mg / 6mg","vgpg":"","price":0,"isDeal":false,"dealNote":"","isTop10":false,"image":"bad-drip-logo.png","notes":""},
@@ -1827,7 +1828,8 @@ function renderBrandGrid() {
   const FIFTY_DISP = new Set(['Fruitia x Fifty Bar 20K','Fifty Bar V2 20K']);
   const OXBAR_DISP = new Set(['OXBAR Astro Maze 50K']);
   const SEVEN_DAZE_DISP = new Set(['7 Daze', 'Fusion', 'Reds Apple']);
-  const AIR_FACTORY_SET = new Set(['Air Factory']);
+  const AIR_FACTORY_SET  = new Set(['Air Factory']);
+  const BARISTA_SET      = new Set(['Barista Brew']);
   let razDispSeen = false;
   let gbSeen = false;
   let lmSeen = false;
@@ -1836,6 +1838,7 @@ function renderBrandGrid() {
   let oxbarSeen = false;
   let sevenDazeSeen = false;
   let airFactorySeen = false;
+  let baristaSeen = false;
   products.forEach(p => {
     if (RAZ_DISP.has(p.brand))        { razDispSeen = true; return; }
     if (GB_DISP.has(p.brand))         { gbSeen = true; return; }
@@ -1844,12 +1847,13 @@ function renderBrandGrid() {
     if (FIFTY_DISP.has(p.brand))      { fiftySeen = true; return; }
     if (OXBAR_DISP.has(p.brand))      { oxbarSeen = true; return; }
     if (SEVEN_DAZE_DISP.has(p.brand)) { sevenDazeSeen = true; return; }
-    if (AIR_FACTORY_SET.has(p.brand)) { airFactorySeen = true; return; }
+    if (AIR_FACTORY_SET.has(p.brand))  { airFactorySeen = true; return; }
+    if (BARISTA_SET.has(p.brand))      { baristaSeen = true; return; }
     brandMap[p.brand] = (brandMap[p.brand] || 0) + 1;
   });
   const brands = Object.entries(brandMap).sort((a,b) => a[0].localeCompare(b[0]));
   const grid = document.getElementById('brand-grid');
-  if (!brands.length && !razDispSeen && !gbSeen && !lmSeen && !pachaSeen && !fiftySeen && !oxbarSeen && !sevenDazeSeen && !airFactorySeen) {
+  if (!brands.length && !razDispSeen && !gbSeen && !lmSeen && !pachaSeen && !fiftySeen && !oxbarSeen && !sevenDazeSeen && !airFactorySeen && !baristaSeen) {
     grid.innerHTML = emptyState('🏷', 'No brands yet.');
     return;
   }
@@ -1878,7 +1882,10 @@ function renderBrandGrid() {
   const airFactoryCard = airFactorySeen ? `<div class="brand-card" data-brand="Air Factory">
     <img class="brand-card-logo" src="images/air-factory-logo.jpg" alt="Air Factory">
   </div>` : '';
-  grid.innerHTML = razCard + gbCard + lmCard + pachaCard + fiftyCard + oxbarCard + sevenDazeCard + airFactoryCard + brands.map(([brand, count]) =>
+  const baristaCard = baristaSeen ? `<div class="brand-card" data-brand="Barista Brew">
+    <img class="brand-card-logo" src="images/barista-brew-logo.webp" alt="Barista Brew Co.">
+  </div>` : '';
+  grid.innerHTML = razCard + gbCard + lmCard + pachaCard + fiftyCard + oxbarCard + sevenDazeCard + airFactoryCard + baristaCard + brands.map(([brand, count]) =>
     `<div class="brand-card" data-brand="${esc(brand)}">
       <div class="brand-card-name">${esc(brand)}</div>
       <div class="brand-card-count">${count} product${count !== 1 ? 's' : ''}</div>
