@@ -1830,6 +1830,7 @@ function renderBrandGrid() {
   const SEVEN_DAZE_DISP = new Set(['7 Daze', 'Fusion', 'Reds Apple']);
   const AIR_FACTORY_SET  = new Set(['Air Factory']);
   const BARISTA_SET      = new Set(['Barista Brew']);
+  const ALT_ZERO_SET     = new Set(['Alt Zero']);
   let razDispSeen = false;
   let gbSeen = false;
   let lmSeen = false;
@@ -1839,6 +1840,7 @@ function renderBrandGrid() {
   let sevenDazeSeen = false;
   let airFactorySeen = false;
   let baristaSeen = false;
+  let altZeroSeen = false;
   products.forEach(p => {
     if (RAZ_DISP.has(p.brand))        { razDispSeen = true; return; }
     if (GB_DISP.has(p.brand))         { gbSeen = true; return; }
@@ -1849,11 +1851,12 @@ function renderBrandGrid() {
     if (SEVEN_DAZE_DISP.has(p.brand)) { sevenDazeSeen = true; return; }
     if (AIR_FACTORY_SET.has(p.brand))  { airFactorySeen = true; return; }
     if (BARISTA_SET.has(p.brand))      { baristaSeen = true; return; }
+    if (ALT_ZERO_SET.has(p.brand))     { altZeroSeen = true; return; }
     brandMap[p.brand] = (brandMap[p.brand] || 0) + 1;
   });
   const brands = Object.entries(brandMap).sort((a,b) => a[0].localeCompare(b[0]));
   const grid = document.getElementById('brand-grid');
-  if (!brands.length && !razDispSeen && !gbSeen && !lmSeen && !pachaSeen && !fiftySeen && !oxbarSeen && !sevenDazeSeen && !airFactorySeen && !baristaSeen) {
+  if (!brands.length && !razDispSeen && !gbSeen && !lmSeen && !pachaSeen && !fiftySeen && !oxbarSeen && !sevenDazeSeen && !airFactorySeen && !baristaSeen && !altZeroSeen) {
     grid.innerHTML = emptyState('🏷', 'No brands yet.');
     return;
   }
@@ -1885,7 +1888,10 @@ function renderBrandGrid() {
   const baristaCard = baristaSeen ? `<div class="brand-card" data-brand="Barista Brew">
     <img class="brand-card-logo" src="images/barista-brew-logo.webp" alt="Barista Brew Co.">
   </div>` : '';
-  grid.innerHTML = razCard + gbCard + lmCard + pachaCard + fiftyCard + oxbarCard + sevenDazeCard + airFactoryCard + baristaCard + brands.map(([brand, count]) =>
+  const altZeroCard = altZeroSeen ? `<div class="brand-card" data-brand="Alt Zero">
+    <img class="brand-card-logo" src="images/alt-zero-logo.webp" alt="Alt Zero">
+  </div>` : '';
+  grid.innerHTML = razCard + gbCard + lmCard + pachaCard + fiftyCard + oxbarCard + sevenDazeCard + airFactoryCard + baristaCard + altZeroCard + brands.map(([brand, count]) =>
     `<div class="brand-card" data-brand="${esc(brand)}">
       <div class="brand-card-name">${esc(brand)}</div>
       <div class="brand-card-count">${count} product${count !== 1 ? 's' : ''}</div>
