@@ -2347,6 +2347,11 @@ function init() {
   seedIfEmpty();
   renderShopHeader();
   switchTab('brand');
+  const startQ = (new URLSearchParams(window.location.search).get('q') || '').trim();
+  if (startQ) {
+    document.getElementById('search-input').value = startQ;
+    doSearch(startQ);
+  }
   if (new URLSearchParams(window.location.search).has('admin')) window.location.href = 'admin-stock.html';
 }
 init();

@@ -105,11 +105,11 @@
   <script>
     const KEY = 'vp_age_verified';
     if (sessionStorage.getItem(KEY)) {
-      window.location.replace('ejuicefinder.html');
+      window.location.replace('ejuicefinder.html' + window.location.search);
     }
     document.getElementById('btn-yes').addEventListener('click', function () {
       sessionStorage.setItem(KEY, '1');
-      window.location.href = 'ejuicefinder.html';
+      window.location.href = 'ejuicefinder.html' + window.location.search;
     });
     document.getElementById('btn-no').addEventListener('click', function () {
       window.location.href = 'https://www.google.com';
