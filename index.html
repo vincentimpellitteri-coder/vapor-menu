@@ -104,6 +104,10 @@
   </div>
   <script>
     const KEY = 'vp_age_verified';
+    // Visitors arriving from tvp.aglots.com already confirmed 21+ there
+    var fromTvp = new URLSearchParams(window.location.search).get('src') === 'tvp';
+    try { fromTvp = fromTvp || new URL(document.referrer).hostname === 'tvp.aglots.com'; } catch (e) {}
+    if (fromTvp) sessionStorage.setItem(KEY, '1');
     if (sessionStorage.getItem(KEY)) {
       window.location.replace('ejuicefinder.html' + window.location.search);
     }
